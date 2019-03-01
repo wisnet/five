@@ -12,9 +12,11 @@
 Thumbs.db
 *error_log*
 
-
 error.log
 .idea/
+
+vendor
+node_modules
 
 # large/disallowed file types
 # a CDN should be used for these

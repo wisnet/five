@@ -1,35 +1,172 @@
+#wisnet Five Starter
 
-# The Timber Starter Theme
+## Requirements
+* PHP 7.2
+* Composer
+* NPM
 
-The "_s" for Timber: a dead-simple theme that you can build from. The primary purpose of this theme is to provide a file structure rather than a framework for markup or styles. Configure your Sass, scripts, and task runners however you would like!
+## Technologies
+* PHP 7.2
+* WP >5.0
+* [Timber](https://www.upstatement.com/timber/) (Plugin)
+* Advanced Custom Fields >5.8.0-beta3 (Plugin)
+* Composer
+* NPM
+* Webpack
+* ES2015
+* HTML5
+* CSS3
+* [Bootstrap 4.2](https://getbootstrap.com/docs/4.2/getting-started/introduction/)
 
-[![Build Status](https://travis-ci.org/timber/starter-theme.svg)](https://travis-ci.org/timber/starter-theme)
 
-## Installing the Theme
+## Blocks
+With the introduction of Gutenberg, WordPress is shifting away from **shortcodes** and moving towards **blocks**.
+Instead of building blocks the WP way, we'll instead take advantage of *Advanced Customs Fields* to handle
+all of the heavy lifting for us. [ACF Blocks](https://www.advancedcustomfields.com/blog/acf-5-8-introducing-acf-blocks-for-gutenberg/) allows us to quickly build new blocks that can be used
+anywhere in the Gutenberg editor.  
 
-Install this theme as you would any other, and be sure the Timber plugin is activated. But hey, let's break it down into some bullets:
+There are a few files that we need for a block to be successfully registered and rendered.
 
-1. Make sure you have installed the plugin for the [Timber Library](https://wordpress.org/plugins/timber-library/) (and Advanced Custom Fields - they [play quite nicely](https://timber.github.io/docs/guides/acf-cookbook/#nav) together). 
-2. Download the zip for this theme (or clone it) and move it to `wp-content/themes` in your WordPress installation. 
-3. Rename the folder to something that makes sense for your website (generally no spaces and all lowercase). You could keep the name `timber-starter-theme` but the point of a starter theme is to make it your own!
-4. Activate the theme in Appearance >  Themes.
-5. Do your thing! And read [the docs](https://github.com/jarednova/timber/wiki).
+#### Block Controller
+The block controller will reside in `/wp-content/themes/wisnet/inc/lib/wisnet/Block/Controller/` and the name of the
+file will **need to match the block name** (but without spaces/hyphens/underscores/etc...).  
 
-## What's here?
+*Example:*  
+If we have a block for recent posts  
+**Title:** Recent Posts   
+**Name:** recent-posts  
+**File Name (Controller):** `RecentPosts.php` (follows the "Name" of the template but uses [Upper Camel Case](http://wiki.c2.com/?UpperCamelCase))  
 
-`static/` is where you can keep your static front-end scripts, styles, or images. In other words, your Sass files, JS files, fonts, and SVGs would live here.
 
-`templates/` contains all of your Twig templates. These pretty much correspond 1 to 1 with the PHP files that respond to the WordPress template hierarchy. At the end of each PHP template, you'll notice a `Timber::render()` function whose first parameter is the Twig file where that data (or `$context`) will be used. Just an FYI.
+```php
+<?php
+/**
+ * File: RecentPosts.php
+ * Date: 2018-12-27
+ * Time: 07:06
+ *
+ * @package wisnet Five
+ * @author Michael Dahlke <mdahlke@wisnet.com>
+ */
 
-`bin/` and `tests/` ... basically don't worry about (or remove) these unless you know what they are and want to.
+namespace wisnet\Block\Controller;
 
-## Other Resources
+class RecentPosts extends Base {
+	protected $name = 'recent-posts';
+	protected $title = 'Recent Posts';
+	protected $description = 'Show recent posts from the selected category.';
+	protected $category = 'layout';
+	protected $icon = 'admin-post';
+	protected $keywords = ['posts', 'news', 'recent'];
 
-The [main Timber Wiki](https://github.com/jarednova/timber/wiki) is super great, so reference those often. Also, check out these articles and projects for more info:
+	public function __construct() {
+		add_action('acf/init', [$this, 'register']);
+		parent::__construct();
+	}
 
-* [This branch](https://github.com/laras126/timber-starter-theme/tree/tackle-box) of the starter theme has some more example code with ACF and a slightly different set up.
-* [Twig for Timber Cheatsheet](http://notlaura.com/the-twig-for-timber-cheatsheet/)
-* [Timber and Twig Reignited My Love for WordPress](https://css-tricks.com/timber-and-twig-reignited-my-love-for-wordpress/) on CSS-Tricks
-* [A real live Timber theme](https://github.com/laras126/yuling-theme).
-* [Timber Video Tutorials](http://timber.github.io/timber/#video-tutorials) and [an incomplete set of screencasts](https://www.youtube.com/playlist?list=PLuIlodXmVQ6pkqWyR6mtQ5gQZ6BrnuFx-) for building a Timber theme from scratch.
+}
+```
+### Block Template
+The template of the block will always reside in `//wp-content/themes/wisnet/src/components/blocks/`. The name of the
+file will **always** be the name of the block.  
 
+*Example:*  
+**Title:** Recent Posts   
+**Name:** recent-posts  
+**File Name (Twig Template):** `recent-posts.php` (follows the "Name" of the block)
+
+Inside the Twig template you will have access to any variable that you need for the block.
+
+`{{ acf_block }}` = ACF Block  
+*Information about the block (id, name, description, keywords, etc...)*  
+
+`{{ fields }}` = ACF Fields  
+*ACF fields that are in that particular block*   
+
+`{{ block }}` = *BlockClass*  
+ *The *class* that helps render advanced fields. You'll want to check that class for what's
+ available for the template*
+
+```twig
+<!-- src/components/blocks/recent-posts.twig -->
+<section class="container">
+    <div class="row">
+        <div class="col">
+            <h1>{{ block.title }}</h1>
+        </div>
+    </div>
+
+    <div class="row {{ block.settings.alignment.horizontal }}">
+        {% for post in block.posts %}
+            <section class="{% if block.settings.fluid_items %}{{ block.settings.items_break_point }}{% else %}{{ block.settings.items_break_point }}-{{ block.settings.column_width }}{% endif %}">
+                <h3>{{ post.title }}</h3>
+                <p>{{ post.preview }}</p>
+            </section>
+        {% endfor %}
+    </div>
+</section>
+
+```
+### Block View
+Sometimes the rendering of the block is a little more complex and requires pre-processing. In these
+cases we can create a *view* class. This file resides in `/wp-content/themes/wisnet/inc/lib/wisnet/Block/View/`
+and follows the same naming convention as the controller.
+
+```php
+<?php
+/**
+ * File: RecentPosts.php
+ * Date: 2018-12-27
+ * Time: 07:06
+ *
+ * @package wisnet Five
+ * @author Michael Dahlke <mdahlke@wisnet.com>
+ */
+
+namespace wisnet\Block\View;
+
+use Timber\Post;
+use Timber\PostQuery;
+
+class RecentPosts extends Base {
+	public $numberOfPosts = 3;
+	public $title = 'Recent Posts';
+	public $dynamic = true;
+	public $category = null;
+	public $posts = [];
+
+	public function __construct(array $fields) {
+		parent::__construct($fields);
+
+		$this->findPosts();
+	}
+
+	...
+
+	public function findPosts() {
+		if ($this->isDynamic()) {
+			$args = [
+				'post_type' => $this->category ?? 'post',
+				'posts_per_page' => $this->getNumberOfPosts(),
+			];
+
+			$query = new PostQuery($args);
+
+			$posts = $query->get_posts();
+			$this->setPosts($posts);
+		}
+		else {
+			$posts = [];
+			foreach ($this->getPosts() as $id) {
+				$posts[] = new Post($id);
+			}
+		}
+		$this->setPosts($posts);
+
+		return $this->getPosts();
+	}
+
+}
+```
+
+## Menus

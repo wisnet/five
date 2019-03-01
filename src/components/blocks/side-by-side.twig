@@ -1,0 +1,21 @@
+{% extends 'blocks/block.twig' %}
+
+{% block content %}
+    <!-- src/components/blocks/side-by-side.twig -->
+    {% embed 'container.twig' %}
+        {% block content %}
+            {% embed 'row.twig' %}
+                {% block content %}
+                    <div class="col-xs-12 col-sm-6 vertical-center-column side-by-side-section__wrap">
+                        <img class="img-fluid" src="{{ block.getImage().image.url }}" alt="{{ block.getImage().image.title }}" />
+                    </div>
+                    <div class="col-xs-12 col-sm-6 vertical-center-column side-by-side-section__wrap {{ block.getSetting('content_alignment') }}">
+                        {{ block.getContent() }}
+                    </div>
+                {% endblock %}
+            {% endembed %}
+        {% endblock %}
+    {% endembed %}
+
+{% endblock %}
+

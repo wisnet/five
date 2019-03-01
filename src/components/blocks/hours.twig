@@ -1,0 +1,34 @@
+<!-- src/components/blocks/hours.twig -->
+<section id="{{ acf_block.id }}" class="working-hours {{ acf_block.className }}">
+    {% embed 'container.twig' %}
+        {% block content %}
+            {% embed 'row.twig' %}
+                {% block content %}
+                    {% embed 'column.twig' %}
+                        {% block content %}
+                            {# Renders the `components/blocks/heading.twig` template #}
+                            <div class="working-hours__heading">
+                                {{ block.getHeading() }}
+                            </div>
+
+                            {% for day in block.workingHours %}
+                                <section class="working-hours__segment">
+                                    <span class="working-hours__day text-color-1">{{ day.label }}: </span>
+                                    {% if day.isOpen %}
+                                        <span class="working-hours__open">{{ day.hours.open }}</span>
+                                        {% if day.hours.open and day.hours.close %}
+                                            <span class="working-hours__delimiter delimiter">{{ day.hours.delimiter }}</span>
+                                            <span class="working-hours__close">{{ day.hours.close }}</span>
+                                        {% endif %}
+                                    {% else %}
+                                        <span class="working-hours__close">Closed</span>
+                                    {% endif %}
+                                </section>
+                            {% endfor %}
+                        {% endblock %}
+                    {% endembed %}
+                {% endblock %}
+            {% endembed %}
+        {% endblock %}
+    {% endembed %}
+</section>

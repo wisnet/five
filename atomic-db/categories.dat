@@ -1,0 +1,38 @@
+[
+    {
+        "category": "third-party",
+        "order": 2
+    },
+    {
+        "category": "helpers",
+        "order": 0
+    },
+    {
+        "category": "variables",
+        "order": 1
+    },
+    {
+        "category": "organisms",
+        "order": 4
+    },
+    {
+        "category": "layouts",
+        "order": 5
+    },
+    {
+        "category": "molecules",
+        "order": 3
+    },
+    {
+        "category": "blocks",
+        "order": 7
+    },
+    {
+        "category": "pages",
+        "order": 8
+    },
+    {
+        "category": "embeds",
+        "order": 6
+    }
+]

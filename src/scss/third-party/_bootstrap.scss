@@ -1,0 +1,37 @@
+/* src/scss/third-party/_bootstrap.scss */
+@import '../../../node_modules/bootstrap/scss/bootstrap';
+
+$gutters: (
+        'no': 0,
+        'xs': 1px,
+        'sm': 7px,
+        'md': 15px,
+        'lg': 22px,
+        'xl': 30px
+);
+
+@each $name, $size in $gutters {
+  /* #{$name} gutters */
+  #{$name}-gutters,
+  .#{$name}-gutters {
+    padding-right: #{$size};
+    padding-left: #{$size};
+
+    .row {
+      margin-right: -#{$size};
+      margin-left: -#{$size};
+
+      > {
+        [class^="col"],
+        [class*=" col"] {
+          padding-right: #{$size};
+          padding-left: #{$size};
+
+          &.vs {
+            margin-top: calc(#{$size} * 2);
+          }
+        }
+      }
+    }
+  }
+}

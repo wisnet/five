@@ -1,0 +1,10 @@
+[
+    {
+        "styles_directory": "src\/scss",
+        "styles_extension": "scss",
+        "component_directory": "src\/components",
+        "component_extension": "twig",
+        "js_directory": "src\/js",
+        "js_extension": "js"
+    }
+]

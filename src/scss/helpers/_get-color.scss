@@ -1,0 +1,7 @@
+/* src/scss/helpers/_get-color.scss */
+@function get-color($key, $transparency: 0){
+	@if map-has-key($colors, $key) {
+		@return transparentize(map-get($colors, $key), $transparency);
+	}
+	@error "Invalid color name: `#{$key}`.";
+}

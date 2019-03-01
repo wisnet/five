@@ -1,0 +1,36 @@
+/* src/scss/third-party/_bootstrap-blocks.scss */
+
+[w_container="container"] {
+  @extend .container;
+}
+
+[w_container="container-fluid"] {
+  @extend .container-fluid;
+}
+
+[w_container="container"],
+[w_container="container-fluid"] {
+  &[w_gutters="no-gutters"] {
+    @extend .no-gutters;
+  }
+
+  &[w_gutters="xs-gutters"] {
+    @extend .xs-gutters;
+  }
+
+  &[w_gutters="sm-gutters"] {
+    @extend .sm-gutters;
+  }
+
+  &[w_gutters="md-gutters"] {
+    @extend .md-gutters;
+  }
+
+  &[w_gutters="lg-gutters"] {
+    @extend .lg-gutters;
+  }
+
+  &[w_gutters="xl-gutters"] {
+    @extend .xl-gutters;
+  }
+}

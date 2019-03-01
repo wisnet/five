@@ -1,0 +1,41 @@
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = RawHTML;
+
+var _objectSpread2 = _interopRequireDefault(require("@babel/runtime/helpers/objectSpread"));
+
+var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
+
+var _react = require("./react");
+
+/**
+ * External dependencies
+ */
+
+/**
+ * Component used as equivalent of Fragment with unescaped HTML, in cases where
+ * it is desirable to render dangerous HTML without needing a wrapper element.
+ * To preserve additional props, a `div` wrapper _will_ be created if any props
+ * aside from `children` are passed.
+ *
+ * @param {string} props.children HTML to render.
+ *
+ * @return {WPElement} Dangerously-rendering element.
+ */
+function RawHTML(_ref) {
+  var children = _ref.children,
+      props = (0, _objectWithoutProperties2.default)(_ref, ["children"]);
+  // The DIV wrapper will be stripped by serializer, unless there are
+  // non-children props present.
+  return (0, _react.createElement)('div', (0, _objectSpread2.default)({
+    dangerouslySetInnerHTML: {
+      __html: children
+    }
+  }, props));
+}
+//# sourceMappingURL=raw-html.js.map

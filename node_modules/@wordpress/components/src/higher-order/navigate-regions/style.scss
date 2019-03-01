@@ -1,0 +1,23 @@
+.components-navigate-regions.is-focusing-regions [role="region"] {
+	&:focus::after {
+		content: "";
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		pointer-events: none;
+		outline: 4px solid transparent; // Shown in Windows High Contrast mode.
+		animation: editor-animation__region-focus 0.2s ease-out;
+		animation-fill-mode: forwards;
+	}
+}
+
+@keyframes editor-animation__region-focus {
+	from {
+		box-shadow: inset 0 0 0 0 $blue-medium-400;
+	}
+	to {
+		box-shadow: inset 0 0 0 4px $blue-medium-400;
+	}
+}

@@ -1,0 +1,13 @@
+<!-- src/components/molecules/menu-item-dropdown.twig -->
+<li class="nav-item {% if item.level == 0 %}dropdown{% else %}dropdown-submenu{% endif %} dropdown__level-{{ item.level }}
+{% if item.current_item_ancestor %} current-ancestor{% endif %}
+{% if item.current_item_parent %} current-parent{% endif %}">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown__{{ item.slug }}-{{ item.level }}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        {{ item.title }}
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+        {% for cItem in item.children %}
+            {% include 'molecules/menu-item.twig' with {'item': cItem} %}
+        {% endfor %}
+    </ul>
+</li>

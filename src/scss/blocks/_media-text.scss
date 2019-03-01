@@ -1,0 +1,15 @@
+/* src/scss/blocks/_media-text.scss */
+.wp-block-media-text__content {
+  .wp-block-wrapper-media-text[content_alignment=top] & {
+    align-self: flex-start;
+  }
+
+  .wp-block-wrapper-media-text[content_alignment=middle] & {
+    //align-self: ;
+  }
+
+  .wp-block-wrapper-media-text[content_alignment=bottom] & {
+    align-self: flex-end;
+    @debug &;
+  }
+}

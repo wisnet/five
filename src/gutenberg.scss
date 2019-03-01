@@ -1,0 +1,22 @@
+$editorWidth: 500px;
+
+.editor-block-list__layout {
+  @import './scss/main';
+}
+
+.wp-block {
+  max-width: none !important;
+}
+
+@media (min-width: 782px) {
+  .edit-post-layout.is-sidebar-opened .edit-post-layout__content {
+    margin-right: $editorWidth;
+  }
+  .edit-post-layout.is-sidebar-opened .edit-post-sidebar {
+    width: $editorWidth !important;
+  }
+  .components-notice-list {
+    right: 515px !important;
+  }
+}
+

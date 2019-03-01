@@ -1,0 +1,19 @@
+<section id="{{ acf_block.id }}"
+         class="block__{{ acf_block.name | replace({'acf/': ''}) }} {{ acf_block.className }}">
+
+    {% block content %}
+        {% embed 'container.twig' %}
+            {% block content %}
+                {% embed 'row.twig' %}
+                    {% block content %}
+                        {% embed 'column.twig' %}
+                            {% block content %}
+                                Empty block
+                            {% endblock %}
+                        {% endembed %}
+                    {% endblock %}
+                {% endembed %}
+            {% endblock %}
+        {% endembed %}
+    {% endblock %}
+</section>

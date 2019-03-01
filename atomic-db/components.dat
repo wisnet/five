@@ -1,0 +1,186 @@
+[
+    {
+        "component": "debug",
+        "category": "third-party",
+        "description": "",
+        "backgroundColor": "",
+        "order": 1,
+        "has_js": "true"
+    },
+    {
+        "component": "flash",
+        "category": "third-party",
+        "description": "",
+        "backgroundColor": "",
+        "order": 2,
+        "has_js": "true"
+    },
+    {
+        "component": "get-color",
+        "category": "helpers",
+        "description": "",
+        "backgroundColor": "",
+        "order": -1,
+        "has_js": "false"
+    },
+    {
+        "component": "colors",
+        "category": "variables",
+        "description": "",
+        "backgroundColor": "",
+        "order": -2,
+        "has_js": "false"
+    },
+    {
+        "component": "dynamic-color",
+        "category": "helpers",
+        "description": "",
+        "backgroundColor": "",
+        "order": -3,
+        "has_js": "false"
+    },
+    {
+        "component": "bootstrap",
+        "category": "third-party",
+        "description": "",
+        "backgroundColor": "",
+        "order": 0,
+        "has_js": "false"
+    },
+    {
+        "component": "page-header",
+        "category": "organisms",
+        "description": "",
+        "backgroundColor": "",
+        "order": -5,
+        "has_js": "false"
+    },
+    {
+        "component": "menu",
+        "category": "organisms",
+        "description": "",
+        "backgroundColor": "",
+        "order": -6,
+        "has_js": "true"
+    },
+    {
+        "component": "menu-item",
+        "category": "molecules",
+        "description": "",
+        "backgroundColor": "",
+        "order": -7,
+        "has_js": "false"
+    },
+    {
+        "component": "menu-item-dropdown",
+        "category": "molecules",
+        "description": "",
+        "backgroundColor": "",
+        "order": -8,
+        "has_js": "false"
+    },
+    {
+        "component": "menu-item-single",
+        "category": "molecules",
+        "description": "",
+        "backgroundColor": "",
+        "order": -9,
+        "has_js": "false"
+    },
+    {
+        "component": "slideshow",
+        "category": "blocks",
+        "description": "",
+        "backgroundColor": "",
+        "order": -10,
+        "has_js": "false"
+    },
+    {
+        "component": "recent-posts",
+        "category": "blocks",
+        "description": "",
+        "backgroundColor": "",
+        "order": -11,
+        "has_js": "false"
+    },
+    {
+        "component": "home",
+        "category": "pages",
+        "description": "",
+        "backgroundColor": "",
+        "order": 0,
+        "has_js": "false"
+    },
+    {
+        "component": "contact-us",
+        "category": "pages",
+        "description": "",
+        "backgroundColor": "",
+        "order": 1,
+        "has_js": "false"
+    },
+    {
+        "component": "hours",
+        "category": "blocks",
+        "description": "",
+        "backgroundColor": "",
+        "order": -14,
+        "has_js": "false"
+    },
+    {
+        "component": "heading",
+        "category": "blocks",
+        "description": "",
+        "backgroundColor": "",
+        "order": -15,
+        "has_js": "false"
+    },
+    {
+        "component": "bootstrap-blocks",
+        "category": "third-party",
+        "description": "",
+        "backgroundColor": "",
+        "order": 3,
+        "has_js": "false"
+    },
+    {
+        "component": "container",
+        "category": "embeds",
+        "description": "",
+        "backgroundColor": "",
+        "order": -17,
+        "has_js": "false"
+    },
+    {
+        "component": "row",
+        "category": "embeds",
+        "description": "",
+        "backgroundColor": "",
+        "order": -18,
+        "has_js": "false"
+    },
+    {
+        "component": "column",
+        "category": "embeds",
+        "description": "",
+        "backgroundColor": "",
+        "order": -19,
+        "has_js": "false"
+    },
+    {
+        "component": "side-by-side",
+        "category": "blocks",
+        "description": "",
+        "backgroundColor": "",
+        "order": -20,
+        "has_js": "false"
+    },
+    {
+        "component": "media-text",
+        "category": "blocks",
+        "description": "",
+        "backgroundColor": "",
+        "order": -21,
+        "has_js": "false"
+    }
+]

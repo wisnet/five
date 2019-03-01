@@ -1,0 +1,6 @@
+<!-- src/components/molecules/menu-item.twig -->
+{% if not item.children %}
+    {% include 'molecules/menu-item-single.twig' %}
+{% else %}
+    {% include 'molecules/menu-item-dropdown.twig' %}
+{% endif %}

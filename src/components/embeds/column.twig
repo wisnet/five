@@ -1,0 +1,8 @@
+<!-- src/components/embeds/column.twig -->
+{% if ('fluid_items' | block_global_setting) %}
+<div class="col col-{{ 'items_break_point' | block_global_setting(block) }}">
+    {% else %}
+    <div class="col-12 {{ 'items_break_point' | block_global_setting(block) }}-{{ 'columns' | block_global_setting(block) }}">
+        {% endif %}
+        {% block content %}{% endblock %}
+    </div>

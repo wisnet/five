@@ -1,0 +1,52 @@
+## We typically do not want to include the vendor directory
+## but since we are dealing with WPEngine, we need to.
+## That is, until they decide we should be able to run
+## `composer install` in the production environment
+*~
+.DS_Store
+.svn
+.cvs
+*.bak
+*.swp
+*.psd
+Thumbs.db
+*error_log*
+
+
+error.log
+.idea/
+
+# large/disallowed file types
+# a CDN should be used for these
+*.hqx
+*.bin
+*.exe
+*.dll
+*.deb
+*.dmg
+*.iso
+*.img
+*.msi
+*.msp
+*.msm
+*.mid
+*.midi
+*.kar
+*.mp3
+*.ogg
+*.m4a
+*.ra
+*.3gpp
+*.3gp
+*.mp4
+*.mpeg
+*.mpg
+*.mov
+*.webm
+*.flv
+*.m4v
+*.mng
+*.asx
+*.asf
+*.wmv
+*.avi

@@ -1,0 +1,15 @@
+{% extends "tease.twig" %}
+
+{% block content %}
+    <article class="col-sm-4 tease tease-{{ post.post_type }}" id="tease-{{ post.ID }}">
+        <div class="member__thumbnail">
+            {% if post.thumbnail.src %}
+                <img class="img-fluid img-thumbnail mx-auto d-block" src="{{ post.thumbnail.src }}" />
+            {% else %}
+                <img class="img-fluid img-thumbnail mx-auto d-block" src="{{ options.team_member.placeholder_image | acf_image('medium') }}" />
+            {% endif %}
+        </div>
+        <h2 class="h2"><a href="{{ post.link }}">{{ post.title }}</a></h2>
+        <p>{{ post.preview.length(25) }}</p>
+    </article>
+{% endblock %}

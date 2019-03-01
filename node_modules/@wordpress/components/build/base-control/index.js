@@ -1,0 +1,40 @@
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _element = require("@wordpress/element");
+
+var _classnames = _interopRequireDefault(require("classnames"));
+
+/**
+ * External dependencies
+ */
+function BaseControl(_ref) {
+  var id = _ref.id,
+      label = _ref.label,
+      help = _ref.help,
+      className = _ref.className,
+      children = _ref.children;
+  return (0, _element.createElement)("div", {
+    className: (0, _classnames.default)('components-base-control', className)
+  }, (0, _element.createElement)("div", {
+    className: "components-base-control__field"
+  }, label && id && (0, _element.createElement)("label", {
+    className: "components-base-control__label",
+    htmlFor: id
+  }, label), label && !id && (0, _element.createElement)("span", {
+    className: "components-base-control__label"
+  }, label), children), !!help && (0, _element.createElement)("p", {
+    id: id + '__help',
+    className: "components-base-control__help"
+  }, help));
+}
+
+var _default = BaseControl;
+exports.default = _default;
+//# sourceMappingURL=index.js.map

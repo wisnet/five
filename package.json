@@ -1,0 +1,31 @@
+{
+  "private": true,
+  "scripts": {
+    "dev": "npm run development",
+    "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch-poll": "npm run watch -- --watch-poll",
+    "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "prod": "npm run production",
+    "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+  },
+  "devDependencies": {
+    "@babel/preset-react": "^7.0.0",
+    "@wordpress/blocks": "^6.0.5",
+    "@wordpress/components": "^7.0.5",
+    "@wordpress/hooks": "^2.0.4",
+    "axios": "^0.18.0",
+    "bootstrap": "^4.2.1",
+    "cross-env": "^5.2.0",
+    "file-system": "^2.2.2",
+    "fs": "0.0.1-security",
+    "jquery": "^3.3.1",
+    "jquery-ui": "^1.12.1",
+    "laravel-mix": "^4.0.12",
+    "popper.js": "^1.14.6",
+    "resolve-url-loader": "^2.3.1",
+    "sass": "^1.15.2",
+    "sass-loader": "^7.1.0",
+    "vue-template-compiler": "^2.5.21"
+  }
+}

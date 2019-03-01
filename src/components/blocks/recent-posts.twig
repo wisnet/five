@@ -1,0 +1,26 @@
+{% extends 'blocks/block.twig' %}
+
+{% block content %}
+    {% embed 'container.twig' %}
+        {% block content %}
+            {% embed 'row.twig' %}
+                {% block content %}
+                    <div class="col">
+                        <h1>{{ block.title }}</h1>
+                    </div>
+                {% endblock %}
+            {% endembed %}
+        {% endblock %}
+    {% endembed %}
+
+    {% embed 'row.twig' %}
+        {% block content %}
+            {% for post in block.posts %}
+                <section class="{% if block.settings.fluid_items %}{{ block.settings.items_break_point }}{% else %}{{ block.settings.items_break_point }}-{{ block.settings.column_width }}{% endif %}">
+                    <h3>{{ post.title }}</h3>
+                    <p>{{ post.preview }}</p>
+                </section>
+            {% endfor %}
+        {% endblock %}
+    {% endembed %}
+{% endblock %}

@@ -1,0 +1,137 @@
+/* src/scss/variables/_colors.scss */
+
+//== Colors
+//
+//## Gray and brand colors for use across Bootstrap.
+
+$gray-base: #444444 !default;
+$gray-darker: #313131 !default; // #222
+$gray-dark: lighten($gray-base, 20%) !default; // #333
+$gray: #BEBDBD !default; // #555
+$gray-light: #E4E4E4 !default; // #777
+$gray-lighter: lighten($gray-base, 69.5%) !default; // #eee
+
+$brand-primary: darken(#17c0e5, 6.5%) !default;
+$brand-success: #5cb85c !default;
+$brand-info: #254151 !default;
+$brand-warning: #f0ad4e !default;
+$brand-danger: #d9534f !default;
+$brand-default: $gray-lighter;
+
+$theme-colors: (
+        'color-1': #4CD4CB,
+        'color-2': #EF8D4C,
+        'color-3': #254151,
+        'color-4': #75B2E4,
+        'color-5': #021823,
+        'theme-orange': #EF8D4C,
+);
+
+$theme-hover-colors: (
+  //'color-1-hover': #4CD4CB,
+  //'color-2-hover': #EF8D4C,
+  //'color-3-hover': #254151,
+  //'color-4-hover': #75B2E4,
+  //'color-5-hover': #021823,
+);
+
+$theme-colors-variations: (
+        'color-1-light': #d44b3c,
+        'color-1-dark': #9a2316,
+        'nav-link': #101010,
+);
+
+$theme-colors: map_merge($theme-colors, $theme-colors-variations);
+
+$other-colors: (
+        'black': #333,
+        'white': #fefefe,
+        'gray-lighter': $gray-lighter,
+        'gray-light': $gray-light,
+        'gray': $gray,
+        'gray-dark': $gray-dark,
+        'gray-darker': $gray-darker,
+        'brand-primary': $brand-primary,
+        'brand-success': $brand-success,
+        'brand-info': $brand-info,
+        'brand-warning': $brand-warning,
+        'brand-danger': $brand-danger
+);
+
+$colors: map-merge($theme-colors, $other-colors);
+$colors: map_merge($colors, $theme-hover-colors);
+
+.gradient {
+  margin-top: 15px;
+  padding: 20px;
+  color: #fff;
+  //@include linear-gradient(to right, to-string(map-values($colors), ','));
+}
+
+@each $id, $color in $colors {
+  .text-#{$id} {
+    color: $color;
+  }
+  .bg-#{$id} {
+    background-color: $color;
+  }
+
+  .color-demo {
+    &.bg-#{$id} {
+      color: dynamic-color($color);
+      &::after {
+        display: block;
+        position: relative;
+        content: "[bg|text]-#{$id}  #{$color}";
+        top: 50%;
+        text-align: center;
+        transform: translateY(-50%);
+      }
+    }
+  }
+
+  .btn-#{$id} {
+    background-color: $color !important;
+    color: dynamic-color($color) !important;
+    border-color: darken($color, .2) !important;
+    transition: 100ms all linear;
+
+    &:hover {
+      @if (map-has-key($colors, "#{$id}-hover")) {
+        background-color: get-color("#{$id}-hover") !important;
+      } @else {
+        background-color: lighten($color, 10%) !important;
+      }
+    }
+  }
+}
+
+.flex-container {
+  display: flex;
+  justify-content: space-around;
+  > div {
+
+  }
+}
+
+.color-demo {
+  height: 100px;
+  color: #fff;
+  font-size: 12px;
+
+}
+
+.colorFixed {
+  position: fixed;
+  z-index: 3000;
+  right: 0;
+  top: 0;
+  box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.57);
+
+  .color {
+    float: none;
+    margin-right: 0;
+    width: 70px;
+    height: 50px;
+  }
+}

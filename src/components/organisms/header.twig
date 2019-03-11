@@ -1,0 +1,34 @@
+<!-- src/components/organisms/page-header.php -->
+<div class="header__wrap">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <div class="" href="#">
+                        <h1 class="hdr-logo" role="banner">
+                            <a class="hdr-logo-link" href="{{ site.url }}" rel="home">
+                                {% if options.logo %}
+                                    <img class="img-fluid" src="{{ options.logo.sizes.medium }}" alt="{{ site.name }}" />
+                                {% else %}
+                                    {{ site.name }}
+                                {% endif %}
+                            </a>
+                        </h1>
+                    </div>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        {% include "menu.twig" with {'menu': menu.get_items} %}
+
+                        {#<form class="form-inline my-2 my-lg-0">#}
+                        {#<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">#}
+                        {#<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>#}
+                        {#</form>#}
+                    </div>
+                </nav><!-- #nav -->
+            </div>
+        </div>
+    </div>
+</div>

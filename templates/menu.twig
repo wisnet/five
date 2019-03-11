@@ -1,5 +1,5 @@
 {% if menu %}
-    <ul class="navbar-nav mr-auto">
+    <ul class="navbar-nav {{ options.primary_menu_location }}">
         {% for item in menu %}
             {% include 'molecules/menu-item.twig' %}
         {% endfor %}

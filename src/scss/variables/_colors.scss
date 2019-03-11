@@ -39,6 +39,7 @@ $theme-colors-variations: (
         'color-1-light': #d44b3c,
         'color-1-dark': #9a2316,
         'nav-link': #101010,
+        'link': #4CD4CB,
 );
 
 $theme-colors: map_merge($theme-colors, $theme-colors-variations);
@@ -79,6 +80,7 @@ $colors: map_merge($colors, $theme-hover-colors);
   .color-demo {
     &.bg-#{$id} {
       color: dynamic-color($color);
+
       &::after {
         display: block;
         position: relative;
@@ -109,6 +111,7 @@ $colors: map_merge($colors, $theme-hover-colors);
 .flex-container {
   display: flex;
   justify-content: space-around;
+
   > div {
 
   }

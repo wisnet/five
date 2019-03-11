@@ -27,7 +27,7 @@ class Base {
 		'alignment_vertical' => 'align-items-start',
 		'fluid_items' => true,
 		'columns' => 0,
-		'items_break_point' => 'sm',
+		'items_break_point' => 'col-sm',
 	];
 
 	public function __construct(array $acfBlock, array $fields) {

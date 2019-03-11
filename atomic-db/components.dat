@@ -48,7 +48,7 @@
         "has_js": "false"
     },
     {
-        "component": "page-header",
+        "component": "header",
         "category": "organisms",
         "description": "",
         "backgroundColor": "",
@@ -181,6 +181,30 @@
         "description": "",
         "backgroundColor": "",
         "order": -21,
+        "has_js": "false"
+    },
+    {
+        "component": "team-member",
+        "category": "pages",
+        "description": "",
+        "backgroundColor": "",
+        "order": -22,
+        "has_js": "false"
+    },
+    {
+        "component": "tease",
+        "category": "molecules",
+        "description": "",
+        "backgroundColor": "",
+        "order": -23,
+        "has_js": "false"
+    },
+    {
+        "component": "font",
+        "category": "atoms",
+        "description": "",
+        "backgroundColor": "",
+        "order": -24,
         "has_js": "false"
     }
 ]

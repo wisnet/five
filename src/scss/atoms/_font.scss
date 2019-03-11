@@ -1,0 +1,15 @@
+/* src/scss/atoms/_font.scss */
+a,
+.link,
+.anchor {
+  color: get-color('link');
+
+  &:hover,
+  &:focus {
+    color: darken(get-color('link'), 18%);
+  }
+
+  &:active {
+    color: darken(get-color('link'), 30%);
+  }
+}

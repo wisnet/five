@@ -18864,29 +18864,6 @@ function addSaveProps(extraProps, blockType, attributes) {
 addFilter('blocks.registerBlockType', 'themes/wisnet/add-acf-attr', addAttribute); // for core WP blocks
 
 addFilter('blocks.getSaveContent.extraProps', 'themes/wisnet/add-acf-props', addSaveProps);
-/**
- * Wrap core blocks in Bootstrap container
- */
-// wp.hooks.addFilter('blocks.getSaveElement', 'themes/wisnet/bs-core-blocks', function (element, blockType, attributes) {
-// 	if (blockType.name.substr(0, 5) === 'core/' && isValidBlockType(blockType.name) && wp.element.isValidElement(element)) {
-// 		const col = wp.element.createElement('div', assign({
-// 			'class': ['col', (attributes.columns > 0 ? 'col-sm-' + attributes.columns : '')].join(' ')
-// 		}, {}), element);
-// 		const row = wp.element.createElement('div', assign({
-// 			'class': ['row', attributes.alignment_vertical, attributes.alignment_horizontal, attributes.gutters].join(' ')
-// 		}, {}), col);
-// 		element = wp.element.createElement('div', assign({
-// 			'class': ['wp-block-wrapper', (
-// 				typeof element.props.className === 'string' && element.props.className.match(/(^|\s+)wp-block-/) ?
-// 					element.props.className.replace(/wp-block-/, 'wp-block-wrapper-') :
-// 					'wp-block-wrapper-' + blockType.name.replace(/\//, '-').replace(/^core-/, '')
-// 			), attributes.container].join(' '),
-// 			'data-type': blockType.name
-// 		}, attributes), row);
-// 	}
-// 	return element;
-// });
-
 /* harmony default export */ __webpack_exports__["default"] = (undefined);
 
 /***/ }),
@@ -18952,7 +18929,7 @@ var layoutAttributes = {
   alignment_horizontal: {
     type: 'string',
     meta: 'alignment_horizontal',
-    default: 'justify-content-left'
+    default: 'justify-content-start'
   },
   alignment_vertical: {
     type: 'string',
@@ -19516,10 +19493,10 @@ wp.hooks.addFilter('blocks.getSaveElement', 'themes/wisnet/bs-core-blocks', func
       'class': ['col', attributes.columns > 0 ? 'col-sm-' + attributes.columns : ''].join(' ')
     }, {}), element);
     var row = wp.element.createElement('div', assign({
-      'class': ['row', attributes.alignment_vertical, attributes.alignment_horizontal, attributes.gutters].join(' ')
+      'class': ['row', attributes.alignment_vertical, attributes.alignment_horizontal].join(' ')
     }, {}), col);
     element = wp.element.createElement('div', assign({
-      'class': ['wp-block-wrapper', typeof element.props.className === 'string' && element.props.className.match(/(^|\s+)wp-block-/) ? element.props.className.replace(/wp-block-/, 'wp-block-wrapper-') : 'wp-block-wrapper-' + blockType.name.replace(/\//, '-').replace(/^core-/, ''), attributes.container].join(' '),
+      'class': ['wp-block-wrapper', attributes.gutters, typeof element.props.className === 'string' && element.props.className.match(/(^|\s+)wp-block-/) ? element.props.className.replace(/wp-block-/, 'wp-block-wrapper-') : 'wp-block-wrapper-' + blockType.name.replace(/\//, '-').replace(/^core-/, ''), attributes.container].join(' '),
       'data-type': blockType.name
     }, attributes), row);
   }
@@ -19537,7 +19514,7 @@ wp.hooks.addFilter('blocks.getSaveElement', 'themes/wisnet/bs-core-blocks', func
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/mdahlke/Sites/websites/wisnetfive.dev/www/wp-content/themes/wisnet/src/js/wp-blocks/blocks.jsx */"./src/js/wp-blocks/blocks.jsx");
+module.exports = __webpack_require__(/*! /Users/mdahlke/Sites/websites/wisnetfive.dev/www/wp-content/themes/five/src/js/wp-blocks/blocks.jsx */"./src/js/wp-blocks/blocks.jsx");
 
 
 /***/ })

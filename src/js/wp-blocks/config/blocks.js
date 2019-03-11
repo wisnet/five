@@ -36,7 +36,7 @@ export const layoutAttributes = {
 	alignment_horizontal: {
 		type: 'string',
 		meta: 'alignment_horizontal',
-		default: 'justify-content-left'
+		default: 'justify-content-start'
 	},
 	alignment_vertical: {
 		type: 'string',

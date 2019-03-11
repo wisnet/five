@@ -138,7 +138,7 @@ class App extends Site {
 	 * @return string
 	 */
 	public function add_to_context($context) {
-		$context['menu'] = new Menu('primary');
+		$context['menu'] = new Menu('primary-menu');
 		$context['site'] = $this;
 		$context['post'] = new Post();
 		$context['options'] = get_fields('option');
@@ -202,8 +202,9 @@ class App extends Site {
 	function register_menus() {
 		register_nav_menus(
 			[
-				'new-menu' => __('Primary Navigation'),
-				'another-menu' => __('Footer Navigation'),
+				'primary-menu' => __('Primary Navigation'),
+				'footer-menu' => __('Footer Navigation'),
+				'top-menu' => __('Top Navigation'),
 			]
 		);
 	}

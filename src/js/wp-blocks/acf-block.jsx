@@ -99,28 +99,5 @@ addFilter('blocks.registerBlockType', 'themes/wisnet/add-acf-attr', addAttribute
 // for core WP blocks
 addFilter('blocks.getSaveContent.extraProps', 'themes/wisnet/add-acf-props', addSaveProps);
 
-/**
- * Wrap core blocks in Bootstrap container
- */
-// wp.hooks.addFilter('blocks.getSaveElement', 'themes/wisnet/bs-core-blocks', function (element, blockType, attributes) {
-// 	if (blockType.name.substr(0, 5) === 'core/' && isValidBlockType(blockType.name) && wp.element.isValidElement(element)) {
-// 		const col = wp.element.createElement('div', assign({
-// 			'class': ['col', (attributes.columns > 0 ? 'col-sm-' + attributes.columns : '')].join(' ')
-// 		}, {}), element);
-// 		const row = wp.element.createElement('div', assign({
-// 			'class': ['row', attributes.alignment_vertical, attributes.alignment_horizontal, attributes.gutters].join(' ')
-// 		}, {}), col);
-// 		element = wp.element.createElement('div', assign({
-// 			'class': ['wp-block-wrapper', (
-// 				typeof element.props.className === 'string' && element.props.className.match(/(^|\s+)wp-block-/) ?
-// 					element.props.className.replace(/wp-block-/, 'wp-block-wrapper-') :
-// 					'wp-block-wrapper-' + blockType.name.replace(/\//, '-').replace(/^core-/, '')
-// 			), attributes.container].join(' '),
-// 			'data-type': blockType.name
-// 		}, attributes), row);
-// 	}
-// 	return element;
-// });
-
 
 export default this;

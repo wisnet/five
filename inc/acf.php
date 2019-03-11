@@ -19,16 +19,6 @@ if (function_exists('acf_add_options_page')) {
 		]
 	);
 
-	acf_add_options_sub_page(
-		[
-			'page_title' => 'Music Settings',
-			'menu_title' => 'Music Settings',
-			'menu_slug' => 'music-settings',
-			'capability' => 'manage_options',
-			'parent' => 'edit.php?post_type=music',
-		]
-	);
-
 	acf_add_options_page(
 		[
 			'page_title' => 'Theme Settings',
@@ -44,6 +34,14 @@ if (function_exists('acf_add_options_page')) {
 			'page_title' => 'Theme Settings',
 			'menu_title' => 'Theme Settings',
 			'parent_slug' => 'theme-settings',
+		]
+	);
+
+	acf_add_options_sub_page(
+		[
+			'page_title' => 'Header Settings',
+			'menu_title' => 'Header Settings',
+			'parent_slug' => 'themes.php',
 		]
 	);
 

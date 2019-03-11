@@ -105,10 +105,10 @@ wp.hooks.addFilter('blocks.getSaveElement', 'themes/wisnet/bs-core-blocks', func
 			'class': ['col', (attributes.columns > 0 ? 'col-sm-' + attributes.columns : '')].join(' ')
 		}, {}), element);
 		const row = wp.element.createElement('div', assign({
-			'class': ['row', attributes.alignment_vertical, attributes.alignment_horizontal, attributes.gutters].join(' ')
+			'class': ['row', attributes.alignment_vertical, attributes.alignment_horizontal].join(' ')
 		}, {}), col);
 		element = wp.element.createElement('div', assign({
-			'class': ['wp-block-wrapper', (
+			'class': ['wp-block-wrapper', attributes.gutters, (
 				typeof element.props.className === 'string' && element.props.className.match(/(^|\s+)wp-block-/) ?
 					element.props.className.replace(/wp-block-/, 'wp-block-wrapper-') :
 					'wp-block-wrapper-' + blockType.name.replace(/\//, '-').replace(/^core-/, '')

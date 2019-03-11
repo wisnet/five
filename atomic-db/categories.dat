@@ -13,26 +13,30 @@
     },
     {
         "category": "organisms",
-        "order": 4
-    },
-    {
-        "category": "layouts",
         "order": 5
     },
     {
+        "category": "layouts",
+        "order": 6
+    },
+    {
         "category": "molecules",
-        "order": 3
+        "order": 4
     },
     {
         "category": "blocks",
-        "order": 7
-    },
-    {
-        "category": "pages",
         "order": 8
     },
     {
+        "category": "pages",
+        "order": 9
+    },
+    {
         "category": "embeds",
-        "order": 6
+        "order": 7
+    },
+    {
+        "category": "atoms",
+        "order": 3
     }
 ]

@@ -46,6 +46,7 @@ Timber::$dirname = apply_filters('wisnet/register_timber_directory', ['templates
 Timber::$autoescape = false;
 
 require_once(__DIR__ . '/inc/App.php');
+require_once(__DIR__ . '/inc/Util.php');
 require_once(__DIR__ . '/vendor/autoload.php');
 require_once(__DIR__ . '/inc/lib/DebugAlias.php');
 require_once(__DIR__ . '/inc/lib/class-tgm-plugin-activation.php');

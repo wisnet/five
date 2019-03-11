@@ -11,6 +11,7 @@
 namespace wisnet\Block\Controller;
 
 use Timber\Timber;
+use wisnet\Util;
 
 class Base {
 	/** @var Slug of the block. This will also be the name of the class for the block */
@@ -208,7 +209,7 @@ class Base {
 		// convert name ("acf/testimonial") into path friendly slug ("testimonial")
 		$slug = str_replace(['acf/'], [''], $block['name']);
 		// strip extras that would interfere with class naming conventions
-		$viewClass = str_replace(['-', '_'], '', $slug);
+		$viewClass = Util::formatClassName($slug);
 		// set the full qualified class name
 		$viewFullClass = '\wisnet\Block\View\\' . $viewClass;
 		// get Timber context so we can add to it before rendering the template

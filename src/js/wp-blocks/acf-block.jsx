@@ -56,7 +56,6 @@ export function addAttribute(settings) {
 	// If this is a valid block
 	if (isValidBlockType(settings.name)) {
 		settings.attributes = assign(settings.attributes, getBlockConfig(settings.name).attributes);
-		console.log('SETINGS.ATTRIBUTES', settings.attributes);
 	}
 	
 	return settings;

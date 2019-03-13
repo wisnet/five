@@ -34,6 +34,7 @@ function wisnet_allowed_block_types($allowed_blocks) {
 		'core/heading',
 		'core/list',
 		'atomic-blocks/ab-accordion',
+		'atomic-blocks/ab-testimonial',
 	], array_keys(App::get_acf_blocks()));
 	//	return $allowed;
 	return $allowed;

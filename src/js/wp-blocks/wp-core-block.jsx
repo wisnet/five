@@ -7,7 +7,7 @@ const {__} = wp.i18n;
 const {addFilter} = wp.hooks;
 const {createHigherOrderComponent} = wp.compose;
 import editForm from './layout-settings-panel';
-import {layoutAttributes} from './config/blocks';
+import {layoutAttributes, getBlockConfig} from './config/blocks';
 
 
 /**
@@ -100,6 +100,15 @@ addFilter('blocks.getSaveContent.extraProps', 'themes/wisnet/add-props', addSave
  * Wrap core blocks in Bootstrap container
  */
 wp.hooks.addFilter('blocks.getSaveElement', 'themes/wisnet/bs-core-blocks', function (element, blockType, attributes) {
+	
+	// add the defaults to the attributes if they do not exist
+	const defaults = getBlockConfig(blockType.name).attributes;
+	for (let key in defaults) {
+		if (defaults.hasOwnProperty(key) && typeof attributes[key] === 'undefined') {
+			attributes[key] = defaults[key].default;
+		}
+	}
+	
 	if ((blockType.name.substr(0, 5) === 'core/' || blockType.name.substr(0, 14) === 'atomic-blocks/') && isValidBlockType(blockType.name) && wp.element.isValidElement(element)) {
 		const col = wp.element.createElement('div', assign({
 			'class': ['col', (attributes.columns > 0 ? 'col-sm-' + attributes.columns : '')].join(' ')
@@ -117,7 +126,7 @@ wp.hooks.addFilter('blocks.getSaveElement', 'themes/wisnet/bs-core-blocks', func
 		}, attributes), row);
 	}
 	return element;
-});
+}, 999);
 
 
 export default this;

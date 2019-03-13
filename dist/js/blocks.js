@@ -18820,7 +18820,6 @@ function addAttribute(settings) {
   // If this is a valid block
   if (isValidBlockType(settings.name)) {
     settings.attributes = assign(settings.attributes, Object(_config_blocks__WEBPACK_IMPORTED_MODULE_0__["getBlockConfig"])(settings.name).attributes);
-    console.log('SETINGS.ATTRIBUTES', settings.attributes);
   }
 
   return settings;
@@ -18914,7 +18913,7 @@ var registeredAcfBlocks = ['acf/slideshow', 'acf/recent-posts', 'acf/side-by-sid
  * @type {string[]}
  */
 
-var coreAllowedContainer = ['core/image', 'core/heading', 'core/quote', 'core/table', 'core/paragraph', 'core/columns', 'atomic-blocks/ab-accordion'];
+var coreAllowedContainer = ['core/image', 'core/heading', 'core/quote', 'core/table', 'core/paragraph', 'core/columns', 'atomic-blocks/ab-accordion', 'atomic-blocks/ab-testimonial'];
 var layoutAttributes = {
   container: {
     type: 'string',
@@ -19124,10 +19123,10 @@ function panelContainer(props, defaults) {
         label: 'None (parent element has container)',
         value: 'container-none'
       }, {
-        label: 'Fixed Container',
+        label: 'Normal',
         value: 'container'
       }, {
-        label: 'Fluid Container',
+        label: 'Full Width',
         value: 'container-fluid'
       }],
       onChange: function onChange(nextValue) {
@@ -19488,6 +19487,15 @@ addFilter('blocks.getSaveContent.extraProps', 'themes/wisnet/add-props', addSave
  */
 
 wp.hooks.addFilter('blocks.getSaveElement', 'themes/wisnet/bs-core-blocks', function (element, blockType, attributes) {
+  // add the defaults to the attributes if they do not exist
+  var defaults = Object(_config_blocks__WEBPACK_IMPORTED_MODULE_0__["getBlockConfig"])(blockType.name).attributes;
+
+  for (var key in defaults) {
+    if (defaults.hasOwnProperty(key) && typeof attributes[key] === 'undefined') {
+      attributes[key] = defaults[key].default;
+    }
+  }
+
   if ((blockType.name.substr(0, 5) === 'core/' || blockType.name.substr(0, 14) === 'atomic-blocks/') && isValidBlockType(blockType.name) && wp.element.isValidElement(element)) {
     var col = wp.element.createElement('div', assign({
       'class': ['col', attributes.columns > 0 ? 'col-sm-' + attributes.columns : ''].join(' ')
@@ -19502,7 +19510,7 @@ wp.hooks.addFilter('blocks.getSaveElement', 'themes/wisnet/bs-core-blocks', func
   }
 
   return element;
-});
+}, 999);
 /* harmony default export */ __webpack_exports__["default"] = (undefined);
 
 /***/ }),

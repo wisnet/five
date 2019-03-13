@@ -20,6 +20,7 @@ export const coreAllowedContainer = [
 	'core/paragraph',
 	'core/columns',
 	'atomic-blocks/ab-accordion',
+	'atomic-blocks/ab-testimonial',
 ];
 
 

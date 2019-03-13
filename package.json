@@ -11,6 +11,11 @@
     "lint": "./node_modules/.bin/eslint ./src/js",
     "add-dist": "git add dist/"
   },
+  "pre-commit": [
+    "lint",
+    "prod",
+    "add-dist"
+  ],
   "devDependencies": {
     "@babel/preset-react": "^7.0.0",
     "@wordpress/blocks": "^6.0.5",

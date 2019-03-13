@@ -2,6 +2,7 @@ window.Popper = require('popper.js').default;
 try {
 	window.$ = window.jQuery = require('jquery');
 } catch (e) {
+	console.error(e);
 }
 // require('jquery-ui');
 // require('jquery-ui/ui/widget');

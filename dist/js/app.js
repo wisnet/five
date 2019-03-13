@@ -19439,7 +19439,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-Object(_debug_js__WEBPACK_IMPORTED_MODULE_0__["default"])('scripts running'); // ajaxr({
+console.log('scripts running'); // ajaxr({
 // 	url: wajax.url,
 // 	data: {
 // 		action: 'text'
@@ -19478,12 +19478,8 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()('.dropdown-menu a.dropdown-toggle'
   jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown', function (e) {
     jquery__WEBPACK_IMPORTED_MODULE_0___default()('.dropdown-submenu .show').removeClass('show');
   });
-  Object(_debug__WEBPACK_IMPORTED_MODULE_1__["default"])(e);
+  console.log(e);
   return false;
-});
-var v = 'hey';
-Object(_debug__WEBPACK_IMPORTED_MODULE_1__["default"])({
-  v: v
 });
 
 /***/ }),
@@ -19514,3 +19510,4 @@ module.exports = __webpack_require__(/*! /Users/mdahlke/Sites/websites/wisnetfiv
 /***/ })
 
 /******/ });
+//# sourceMappingURL=app.js.map

@@ -1,7 +1,4 @@
-## We typically do not want to include the vendor directory
-## but since we are dealing with WPEngine, we need to.
-## That is, until they decide we should be able to run
-## `composer install` in the production environment
+## Misc ##
 *~
 .DS_Store
 .svn
@@ -11,15 +8,23 @@
 *.psd
 Thumbs.db
 *error_log*
-
 error.log
+
+## IDE ##
 .idea/
 
+## Theme ##
+
+## We typically do not want to include the vendor directory
+## but since we are dealing with WPEngine, we need to.
+## That is, until they decide we should be able to run
+## `composer install` in the production environment
 vendor
 node_modules
+dist/*/*.map
 
-# large/disallowed file types
-# a CDN should be used for these
+## Large/disallowed file types ##
+## a CDN should be used for these
 *.hqx
 *.bin
 *.exe

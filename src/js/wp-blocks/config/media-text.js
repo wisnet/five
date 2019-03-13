@@ -21,5 +21,6 @@ export const attributes = {
 	}
 };
 
-const panels = [];
+export const panels = [];
+
 

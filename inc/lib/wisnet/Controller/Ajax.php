@@ -16,7 +16,6 @@ class Ajax {
 		// parent::__construct();
 	}
 
-
 	/**
 	 * @param      $action
 	 * @param      $callback
@@ -50,7 +49,17 @@ class Ajax {
 		wp_die();
 	}
 
-	public function register_ajax_routes(){
-		$this->add_ajax_action('test', ['AjaxController', 'test']);
+	public function register_ajax_routes() {
+		$routes = apply_filters('wisnet/ajax_routes', [
+			'test' => ['\wisnet\Controller\Ajax', 'test'],
+		]);
+
+		foreach ($routes as $action => $callback) {
+			$this->add_ajax_action($action, $callback);
+		}
+	}
+
+	public static function test() {
+		wp_send_json_success(['message' => 'hi']);
 	}
 }

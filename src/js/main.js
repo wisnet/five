@@ -1,11 +1,9 @@
 // import $ from 'jquery';
 // import 'bootstrap';
-import debug from './debug.js';
-import flash from './flash.js';
-import axios from 'axios';
+// import axios from 'axios';
 
 
-debug('scripts running');
+console.log('scripts running');
 
 // ajaxr({
 // 	url: wajax.url,

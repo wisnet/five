@@ -2,5 +2,9 @@
     "/dist/js/app.js": "/dist/js/app.js",
     "/dist/css/main.css": "/dist/css/main.css",
     "/dist/css/gutenberg.css": "/dist/css/gutenberg.css",
-    "/dist/js/blocks.js": "/dist/js/blocks.js"
+    "/dist/js/app.js.map": "/dist/js/app.js.map",
+    "/dist/css/main.css.map": "/dist/css/main.css.map",
+    "/dist/css/gutenberg.css.map": "/dist/css/gutenberg.css.map",
+    "/dist/js/blocks.js": "/dist/js/blocks.js",
+    "/dist/js/blocks.js.map": "/dist/js/blocks.js.map"
 }

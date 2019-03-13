@@ -1,8 +1,6 @@
 import $ from 'jquery';
-import debug from './debug';
 
-$('.dropdown-menu a.dropdown-toggle').on('click', function (e) {
-	debug('hi');
+$('.dropdown-menu a.dropdown-toggle').on('click', function () {
 	if (!$(this).next().hasClass('show')) {
 		$(this).parents('.dropdown-menu').first().find('.show').removeClass('show');
 	}
@@ -10,14 +8,9 @@ $('.dropdown-menu a.dropdown-toggle').on('click', function (e) {
 	$subMenu.toggleClass('show');
 	
 	
-	$(this).parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown', function (e) {
+	$(this).parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown', function () {
 		$('.dropdown-submenu .show').removeClass('show');
 	});
 	
-	debug(e);
-	
 	return false;
 });
-
-let v = 'hey';
-debug({v});

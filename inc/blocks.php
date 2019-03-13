@@ -33,6 +33,7 @@ function wisnet_allowed_block_types($allowed_blocks) {
 		'core/paragraph',
 		'core/heading',
 		'core/list',
+		'atomic-blocks/ab-accordion',
 	], array_keys(App::get_acf_blocks()));
 	//	return $allowed;
 	return $allowed;

@@ -18914,7 +18914,7 @@ var registeredAcfBlocks = ['acf/slideshow', 'acf/recent-posts', 'acf/side-by-sid
  * @type {string[]}
  */
 
-var coreAllowedContainer = ['core/image', 'core/heading', 'core/quote', 'core/table', 'core/paragraph', 'core/columns'];
+var coreAllowedContainer = ['core/image', 'core/heading', 'core/quote', 'core/table', 'core/paragraph', 'core/columns', 'atomic-blocks/ab-accordion'];
 var layoutAttributes = {
   container: {
     type: 'string',
@@ -19488,7 +19488,7 @@ addFilter('blocks.getSaveContent.extraProps', 'themes/wisnet/add-props', addSave
  */
 
 wp.hooks.addFilter('blocks.getSaveElement', 'themes/wisnet/bs-core-blocks', function (element, blockType, attributes) {
-  if (blockType.name.substr(0, 5) === 'core/' && isValidBlockType(blockType.name) && wp.element.isValidElement(element)) {
+  if ((blockType.name.substr(0, 5) === 'core/' || blockType.name.substr(0, 14) === 'atomic-blocks/') && isValidBlockType(blockType.name) && wp.element.isValidElement(element)) {
     var col = wp.element.createElement('div', assign({
       'class': ['col', attributes.columns > 0 ? 'col-sm-' + attributes.columns : ''].join(' ')
     }, {}), element);

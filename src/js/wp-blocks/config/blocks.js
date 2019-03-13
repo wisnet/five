@@ -18,7 +18,8 @@ export const coreAllowedContainer = [
 	'core/quote',
 	'core/table',
 	'core/paragraph',
-	'core/columns'
+	'core/columns',
+	'atomic-blocks/ab-accordion',
 ];
 
 

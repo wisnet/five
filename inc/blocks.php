@@ -19,9 +19,6 @@ function wisnet_acf_blocks() {
 		if (class_exists($class)) {
 			new $class();
 		}
-		else {
-			new wisnet\Block\Controller\Butt();
-		}
 	}
 }
 

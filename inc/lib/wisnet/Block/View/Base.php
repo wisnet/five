@@ -10,8 +10,16 @@
 
 namespace wisnet\Block\View;
 
+/**
+ * Base class for all custom blocks
+ *
+ * Class Base
+ * @package wisnet\Block\View
+ */
 class Base {
+	/** @var array */
 	protected $fields = [];
+	/** @var array */
 	protected $settings = [];
 	/**
 	 * @var array

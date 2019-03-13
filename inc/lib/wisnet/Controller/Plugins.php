@@ -45,6 +45,11 @@ class Plugins {
 				'required' => true, // If false, the plugin is only 'recommended' instead of required.
 			],
 			[
+				'name' => 'Atomic Blocks', // The plugin name.
+				'slug' => 'atomic-blocks', // The plugin slug (typically the folder name).
+				'required' => false, // If false, the plugin is only 'recommended' instead of required.
+			],
+			[
 				'name' => 'Custom Post Type UI', // The plugin name.
 				'slug' => 'custom-post-type-ui', // The plugin slug (typically the folder name).
 				'required' => true, // If false, the plugin is only 'recommended' instead of required.
@@ -52,6 +57,11 @@ class Plugins {
 			[
 				'name' => 'Google Analyics',
 				'slug' => 'google-analytics-for-wordpress',
+				'required' => false,
+			],
+			[
+				'name' => 'Relevanssi',
+				'slug' => 'relevanssi',
 				'required' => false,
 			],
 			[
@@ -65,11 +75,6 @@ class Plugins {
 				'required' => true,
 			],
 			[
-				'name' => 'Relevanssi',
-				'slug' => 'relevanssi',
-				'required' => false,
-			],
-			[
 				'name' => 'WP Pusher',
 				'slug' => 'wppusher',
 				'required' => false,
@@ -80,7 +85,7 @@ class Plugins {
 				'name' => 'Gravity Forms Pro',
 				'slug' => 'gravityforms',
 				'required' => false,
-				'source' => 'gravityforms.zip',
+				'source' => 'https://github.com/wisnet/five-plugins/raw/master/gravityforms.zip',
 			],
 			// This is an example of the use of 'is_callable' functionality. A user could - for instance -
 			// have WPSEO installed *or* WPSEO Premium. The slug would in that last case be different, i.e.
@@ -109,7 +114,7 @@ class Plugins {
 			'id' => 'wisnet',                 // Unique ID for hashing notices for multiple instances of TGMPA.
 			'default_path' => get_template_directory() . '/bundled-plugins/',                      // Default absolute path to bundled plugins.
 			'menu' => 'tgmpa-install-plugins', // Menu slug.
-			'has_notices' => true,                    // Show admin notices or not.
+			'has_notices' => false,                    // Show admin notices or not.
 			'dismissable' => false,                    // If false, a user cannot dismiss the nag message.
 			'dismiss_msg' => '',                      // If 'dismissable' is false, this message will be output at top of nag.
 			'is_automatic' => true,                   // Automatically activate plugins after installation or not.

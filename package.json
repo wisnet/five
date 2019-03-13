@@ -9,15 +9,18 @@
     "prod": "npm run production",
     "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "lint": "./node_modules/.bin/eslint ./src/js",
-    "add-dist": "git add dist/"
+    "add-dist": "git add dist/",
+    "copy-fontawesome": "cp ./node_modules/@fortawesome/fontawesome-free/css/all.css ./dist/css/fontawesome.css"
   },
   "pre-commit": [
     "lint",
     "prod",
-    "add-dist"
+    "add-dist",
+    "copy-fontawesome"
   ],
   "devDependencies": {
     "@babel/preset-react": "^7.0.0",
+    "@fortawesome/fontawesome-free": "^5.7.2",
     "@wordpress/blocks": "^6.0.5",
     "@wordpress/components": "^7.0.5",
     "@wordpress/hooks": "^2.0.4",

@@ -6,15 +6,7 @@
     overflow: hidden;
 
     .tease__photo-blur {
-      position: absolute;
-      top: 0;
-      left: 0;
-      background-repeat: repeat;
-      width: 100%;
-      height: 100%;
-      background-position: center;
-      background-size: cover;
-      filter: blur(30px);
+      @extend .photo-blur;
     }
 
     .tease__photo {

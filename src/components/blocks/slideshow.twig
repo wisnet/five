@@ -13,6 +13,8 @@
                                     <div class="carousel-inner">
                                         {% for slide in fields.slides %}
                                             <div class="carousel-item{% if loop.index == 1 %} active{% endif %}">
+                                                <div class="photo-blur"
+                                                     style="background-image: url({{ slide.image.url }});"></div>
                                                 <img class="d-block img-fluid" src="{{ slide.image.url }}" alt="{{ slide.image.title }}">
 
                                                 <div class="carousel-caption d-none d-md-block">

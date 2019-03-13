@@ -1,1 +1,11 @@
 /* src/scss/blocks/_slideshow.scss */
+
+.carousel-item {
+  min-height: 250px;
+
+  img {
+    position: relative;
+    margin: 0 auto;
+    z-index: 1;
+  }
+}

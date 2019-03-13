@@ -120,7 +120,7 @@ class App extends Site {
 
 	public function enqueue_styles() {
 		wp_enqueue_style('parent-fontawesome', get_template_directory_uri() . '/dist/css/fontawesome.css', [], self::VERSION, 'all');
-		wp_enqueue_style('parent-css', get_template_directory_uri() . '/dist/css/main.css', ['parent-font-awesome'], self::VERSION, 'all');
+		wp_enqueue_style('parent-css', get_template_directory_uri() . '/dist/css/main.css', [], self::VERSION, 'all');
 		do_action('wisnet/enqueue_scripts', false, 'parent-css', []);
 	}
 

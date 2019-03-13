@@ -69,6 +69,19 @@ class Plugins {
 				'slug' => 'relevanssi',
 				'required' => false,
 			],
+			[
+				'name' => 'WP Pusher',
+				'slug' => 'wppusher',
+				'required' => false,
+				'source' => 'https://dashboard.wppusher.com/download/latest',
+				'external_url' => 'https://wppusher.com/',
+			],
+			[
+				'name' => 'Gravity Forms Pro',
+				'slug' => 'gravityforms',
+				'required' => false,
+				'source' => 'gravityforms.zip',
+			],
 			// This is an example of the use of 'is_callable' functionality. A user could - for instance -
 			// have WPSEO installed *or* WPSEO Premium. The slug would in that last case be different, i.e.
 			// 'wordpress-seo-premium'.
@@ -94,7 +107,7 @@ class Plugins {
 		 */
 		$config = [
 			'id' => 'wisnet',                 // Unique ID for hashing notices for multiple instances of TGMPA.
-			'default_path' => '',                      // Default absolute path to bundled plugins.
+			'default_path' => get_template_directory() . '/bundled-plugins/',                      // Default absolute path to bundled plugins.
 			'menu' => 'tgmpa-install-plugins', // Menu slug.
 			'has_notices' => true,                    // Show admin notices or not.
 			'dismissable' => false,                    // If false, a user cannot dismiss the nag message.

@@ -7,7 +7,6 @@ import {getBlockConfig} from './config/blocks';
 
 export function panelContainer(props, defaults) {
 	const {attributes, setAttributes} = props;
-	console.log({attributes, defaults});
 	if (defaults.container || false) {
 		return (
 			<PanelBody title={__('Layout')}

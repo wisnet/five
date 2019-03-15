@@ -80,6 +80,7 @@ class App extends Site {
 		add_action('wp', [$this, 'enqueue_scripts']);
 		add_action('wp', [$this, 'enqueue_styles']);
 		add_action('init', [$this, 'register_menus']);
+		add_action('init', [$this, 'register_blocks']);
 
 		$ajax = new Ajax();
 		$ajax->register_ajax_routes();
@@ -125,11 +126,20 @@ class App extends Site {
 	}
 
 	public function enqueue_block_editor_assets() {
+		wp_register_script('five-blocks-js', get_template_directory_uri() . '/dist/js/blocks.build.min.js', ['wp-blocks', 'wp-element']);
 		wp_register_script('parent-block-js', get_template_directory_uri() . '/dist/js/blocks.js', ['wp-blocks', 'wp-data', 'wp-compose'], self::VERSION, true);
+
+		wp_enqueue_script('five-blocks-js');
 		wp_enqueue_script('parent-block-js');
 		wp_enqueue_style('parent-gutenberg-css', get_template_directory_uri() . '/dist/css/gutenberg.css', ['wp-edit-blocks'], '1.0.0', 'all');
 
 		do_action('wisnet/enqueue_block_editor_assets', 'parent-block-js', 'parent-gutenberg-css', []);
+	}
+
+	public function register_blocks() {
+//		register_block_type( 'five/testimonial', array(
+//			'style' => 'testimonial',
+//		) );
 	}
 
 	/** This is where you add some context

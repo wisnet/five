@@ -214,5 +214,13 @@
         "backgroundColor": "",
         "order": -25,
         "has_js": "false"
+    },
+    {
+        "component": "cover",
+        "category": "wp-core-blocks",
+        "description": "",
+        "backgroundColor": "",
+        "order": -26,
+        "has_js": "false"
     }
 ]

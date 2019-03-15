@@ -9,7 +9,6 @@ const {createHigherOrderComponent} = wp.compose;
 import editForm from './layout-settings-panel';
 import {layoutAttributes, getBlockConfig} from './config/blocks';
 
-
 /**
  * Override the default edit UI to include a new block inspector control for
  * adding our custom control.
@@ -40,7 +39,18 @@ function isValidBlockType(name) {
 	const validBlockTypes = coreAllowedContainer;
 	const valid = validBlockTypes.includes(name);
 	
-	return valid;
+	if (valid) {
+		return valid;
+	}
+	
+	let allowed = (
+		name.substr(0, 5) === 'core/' ||
+		name.substr(0, 5) === 'five/' ||
+		name.substr(0, 11) === 'core-embed/' ||
+		name.substr(0, 14) === 'atomic-blocks/'
+	);
+	
+	return allowed;
 	
 }// end isValidBlockType()
 
@@ -109,7 +119,7 @@ wp.hooks.addFilter('blocks.getSaveElement', 'themes/wisnet/bs-core-blocks', func
 		}
 	}
 	
-	if ((blockType.name.substr(0, 5) === 'core/' || blockType.name.substr(0, 14) === 'atomic-blocks/') && isValidBlockType(blockType.name) && wp.element.isValidElement(element)) {
+	if (isValidBlockType(blockType.name) && wp.element.isValidElement(element)) {
 		const col = wp.element.createElement('div', assign({
 			'class': ['col', (attributes.columns > 0 ? 'col-sm-' + attributes.columns : '')].join(' ')
 		}, {}), element);

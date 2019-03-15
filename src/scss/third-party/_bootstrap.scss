@@ -12,18 +12,23 @@ $gutters: (
 
 @each $name, $size in $gutters {
   /* #{$name} gutters */
-  #{$name}-gutters,
   .#{$name}-gutters {
     padding-right: #{$size};
     padding-left: #{$size};
+
+    @if $name == 'no' {
+      &.container {
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
 
     .row {
       margin-right: -#{$size};
       margin-left: -#{$size};
 
       > {
-        [class^="col"],
-        [class*=" col"] {
+        [class*="col"] {
           padding-right: #{$size};
           padding-left: #{$size};
 

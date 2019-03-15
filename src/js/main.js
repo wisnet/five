@@ -3,7 +3,6 @@
 // import axios from 'axios';
 
 
-console.log('scripts running');
 
 // ajaxr({
 // 	url: wajax.url,

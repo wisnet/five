@@ -22,6 +22,7 @@ error.log
 vendor
 node_modules
 dist/*/*.map
+mix-manifest.json
 
 ## Large/disallowed file types ##
 ## a CDN should be used for these

@@ -10,6 +10,9 @@
 
 use wisnet\App;
 
+/** @var string App Version */
+define('PARENT_THEME_VERSION', wp_get_theme()->parent()->Version);
+
 /**
  * Path to Atomic docs
  */
@@ -65,3 +68,4 @@ else {
 }
 
 require_once('inc/blocks.php');
+

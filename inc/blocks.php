@@ -15,9 +15,10 @@ add_action('init', 'wisnet_acf_blocks', 0, 10);
 
 function wisnet_acf_blocks() {
 	foreach (array_values(App::get_acf_blocks()) as $block) {
-		$class = 'wisnet\Block\Controller\\' . $block;
-		if (class_exists($class)) {
-			new $class();
+		$blockClass = 'wisnet\Block\Controller\\' . $block;
+
+		if (class_exists($blockClass)) {
+			new $blockClass();
 		}
 	}
 }

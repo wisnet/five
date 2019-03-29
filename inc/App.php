@@ -23,8 +23,6 @@ use wisnet\Controller\Plugins;
  * You can move this to its own file and include here via php's include("MySite.php")
  */
 class App extends Site {
-	/** @var string App Version */
-	const VERSION = '0.0.1';
 	/**
 	 * acf/block_name => ClassName
 	 *
@@ -60,16 +58,15 @@ class App extends Site {
 
 			if (in_array(strtolower($parts[0]), ['wisnet', 'flash'])) {
 				foreach ($directories ?: [] as $dir) {
-					$file = get_template_directory() . '/inc/lib/' . implode('/', $parts) . '.php';
-					$child = get_stylesheet_directory() . '/inc/lib/' . implode('/', $parts) . '.php';
+					$parent = get_template_directory() . '/inc/lib/' . implode('/', $parts) . '.php';
+					$child = str_replace('/Child/', '', get_stylesheet_directory() . '/inc/lib/' . implode('/', $parts) . '.php');
 
-					if (file_exists($file)) {
-						include($file);
-						return true;
+					// Child first
+					if (file_exists($child)) {
+						return include($child);
 					}
-					else if (file_exists($child)) {
-						include($child);
-						return true;
+					if (file_exists($parent)) {
+						return include($parent);
 					}
 				}
 			};
@@ -94,8 +91,8 @@ class App extends Site {
 	}
 
 	public function enqueue_scripts() {
-		//		wp_register_script('parent-js', get_stylesheet_directory_uri() . '/dist/js/bundle.js', ['jquery'], self::VERSION, true);
-		wp_register_script('parent-js', get_template_directory_uri() . '/dist/js/app.js', ['jquery'], self::VERSION, true);
+		//		wp_register_script('parent-js', get_stylesheet_directory_uri() . '/dist/js/bundle.js', ['jquery'], PARENT_THEME_VERSION, true);
+		wp_register_script('parent-js', get_template_directory_uri() . '/dist/js/app.js', ['jquery'], PARENT_THEME_VERSION, true);
 		wp_localize_script('parent-js', 'wajax', [
 			'url' => admin_url('admin-ajax.php'),
 			//			'registeredAcfBlocks' => json_encode(self::ACF_BLOCKS),
@@ -107,12 +104,12 @@ class App extends Site {
 	}
 
 	public function admin_enqueue_scripts() {
-		//		wp_register_script('parent-js', get_stylesheet_directory_uri() . '/dist/js/bundle.js', ['jquery'], self::VERSION, true);
+		//		wp_register_script('parent-js', get_stylesheet_directory_uri() . '/dist/js/bundle.js', ['jquery'], PARENT_THEME_VERSION, true);
 		wp_register_script('parent-js', get_template_directory_uri() . '/dist/js/app.js', [
 			'jquery',
 			'jquery-ui',
 			'acf-input',
-		], self::VERSION, true);
+		], PARENT_THEME_VERSION, true);
 		wp_localize_script('parent-js', 'wajax', [
 			'url' => admin_url('admin-ajax.php'),
 		]);
@@ -121,14 +118,14 @@ class App extends Site {
 	}
 
 	public function enqueue_styles() {
-		wp_enqueue_style('parent-fontawesome', get_template_directory_uri() . '/dist/css/fontawesome.css', [], self::VERSION, 'all');
-		wp_enqueue_style('parent-css', get_template_directory_uri() . '/dist/css/main.css', [], self::VERSION, 'all');
+		wp_enqueue_style('parent-fontawesome', get_template_directory_uri() . '/dist/css/fontawesome.css', [], PARENT_THEME_VERSION, 'all');
+		wp_enqueue_style('parent-css', get_template_directory_uri() . '/dist/css/main.css', [], PARENT_THEME_VERSION, 'all');
 		do_action('wisnet/enqueue_scripts', false, 'parent-css', []);
 	}
 
 	public function enqueue_block_editor_assets() {
 		wp_register_script('five-blocks-js', get_template_directory_uri() . '/dist/js/blocks.build.min.js', ['wp-blocks', 'wp-element']);
-		wp_register_script('parent-block-js', get_template_directory_uri() . '/dist/js/blocks.js', ['wp-blocks', 'wp-data', 'wp-compose'], self::VERSION, true);
+		wp_register_script('parent-block-js', get_template_directory_uri() . '/dist/js/blocks.js', ['wp-blocks', 'wp-data', 'wp-compose'], PARENT_THEME_VERSION, true);
 
 		wp_enqueue_script('five-blocks-js');
 		wp_enqueue_script('parent-block-js');
@@ -242,10 +239,21 @@ class App extends Site {
 		return $twig;
 	}
 
+	/**
+	 * Register ACF blocks for Gutenberg editor
+	 * @since 0.2.0
+	 */
 	public function register_acf_block() {
 		self::$ACF_BLOCKS = apply_filters('wisnet/register_acf_blocks', self::$ACF_BLOCKS);
 	}
 
+	/**
+	 * Retrieve ACF blocks for Gutenberg editor
+	 *
+	 * @since 0.2.0
+	 *
+	 * @return mixed
+	 */
 	public static function get_acf_blocks() {
 		return apply_filters('wisnet/get_acf_blocks', self::$ACF_BLOCKS);
 	}

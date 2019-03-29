@@ -35,6 +35,7 @@ class Base {
 	 * Base constructor.
 	 */
 	public function __construct() {
+		add_action('acf/init', [$this, 'register']);
 	}
 
 	/**

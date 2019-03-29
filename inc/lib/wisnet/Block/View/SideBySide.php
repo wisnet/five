@@ -18,8 +18,8 @@ class SideBySide extends Base {
 	public $content;
 
 	public function __construct(array $acfBlock, array $fields) {
-		$this->defaultSettings['container'] = 'container-fluid';
-		$this->defaultSettings['content_alignment'] = 'self-align-top';
+		$this->globalSettings['container'] = 'container-fluid';
+		$this->globalSettings['content_alignment'] = 'self-align-top';
 
 		// pull the image out of the fields to set it properly
 		$image = $fields['image'] ?? false;

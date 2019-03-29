@@ -1,5 +1,7 @@
+// import panel from './../slideshow';
+
 export const config = {
-	hasExtraPanel: false,
+	// panel: panel,
 	attributes: {
 		container: {
 			type: 'string',
@@ -22,9 +24,9 @@ export const config = {
 			default: 'align-items-start'
 		},
 		fluid_items: {
-			type: 'boolean',
+			type: 'string',
 			meta: 'fluid_items',
-			default: true
+			default: 'true'
 		},
 		columns: {
 			type: 'number',
@@ -35,7 +37,42 @@ export const config = {
 			type: 'string',
 			meta: 'items_break_point',
 			default: 'col-sm'
-		}
+		},
+		// autoplay: {
+		// 	type: 'boolean',
+		// 	meta: 'autoplay',
+		// 	default: true
+		// },
+		// interval: {
+		// 	type: 'string',
+		// 	meta: 'interval',
+		// 	default: 7000
+		// },
+		// controls: {
+		// 	type: 'string',
+		// 	meta: 'controls',
+		// 	default: 'true'
+		// },
+		// indicators: {
+		// 	type: 'string',
+		// 	meta: 'indicators',
+		// 	default: 'true'
+		// },
+		// pause_on_hover: {
+		// 	type: 'string',
+		// 	meta: 'pause_on_hover',
+		// 	default: 'true'
+		// },
+		// wrap: {
+		// 	type: 'string',
+		// 	meta: 'wrap',
+		// 	default: 'true'
+		// },
+		// height: {
+		// 	type: 'number',
+		// 	meta: 'height',
+		// 	default: 0
+		// }
 	}
 };
 

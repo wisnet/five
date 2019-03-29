@@ -20,8 +20,8 @@ class RecentPosts extends Base {
 	public $category = null;
 	public $posts = [];
 
-	public function __construct(array $acfBlock, array $fields) {
-		parent::__construct($acfBlock, $fields);
+	public function __construct(array $block, array $fields) {
+		parent::__construct($block, $fields);
 
 		$this->findPosts();
 	}

@@ -1,14 +1,6 @@
 const {__} = wp.i18n;
-const {Fragment} = wp.element;
-const {PanelBody, SelectControl, ToggleControl, RangeControl} = wp.components;
-const {InspectorControls} = wp.editor;
-import {createHooks} from '@wordpress/hooks';
+const {PanelBody, SelectControl} = wp.components;
 
-createHooks().addFilter('five.extra_props', 'themes/wisnet/blah', (props) => {
-	props.content_alignment = 'align-self-start';
-	
-	return props;
-});
 
 export default (props, defaults) => {
 	const {attributes, setAttributes} = props;

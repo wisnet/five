@@ -5,7 +5,7 @@ import {coreAllowedContainer} from './config/blocks';
 const {assign} = lodash;
 const {__} = wp.i18n;
 const {addFilter} = wp.hooks;
-const {createHigherOrderComponent} = wp.compose;
+const {createHigherOrderComponent, withSelect} = wp.compose;
 import editForm from './layout-settings-panel';
 import {layoutAttributes, getBlockConfig} from './config/blocks';
 
@@ -137,6 +137,5 @@ wp.hooks.addFilter('blocks.getSaveElement', 'themes/wisnet/bs-core-blocks', func
 	}
 	return element;
 }, 999);
-
 
 export default this;

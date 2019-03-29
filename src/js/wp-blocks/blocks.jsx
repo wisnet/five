@@ -1,5 +1,6 @@
 require('jquery-ui');
 require('bootstrap');
+require('./acf');
 
 
 // add Boostrap wrap to specified core blocks

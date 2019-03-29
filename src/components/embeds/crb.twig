@@ -1,0 +1,16 @@
+<!-- src/components/embeds/crb.twig -->
+
+{% embed 'container.twig' %}
+    {% block content %}
+        {% embed 'row.twig' %}
+            {% block content %}
+                {% embed 'column.twig' %}
+                    {% block content %}
+                        {% block crb %}
+                        {% endblock %}
+                    {% endblock %}
+                {% endembed %}
+            {% endblock %}
+        {% endembed %}
+    {% endblock %}
+{% endembed %}

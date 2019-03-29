@@ -12,4 +12,3 @@ try {
 require('./main');
 require('./menu');
 require('./block-slideshow');
-

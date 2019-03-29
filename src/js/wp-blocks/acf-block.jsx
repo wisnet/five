@@ -1,7 +1,5 @@
 // See https://richardtape.com/?p=348
 
-import {registeredAcfBlocks} from './config/blocks';
-
 const {assign} = lodash;
 const {__} = wp.i18n;
 const {addFilter} = wp.hooks;
@@ -37,8 +35,7 @@ addFilter('editor.BlockEdit', 'themes/wisnet', addMyCustomBlockControls);
  * @param {string} name The name of the block.
  */
 function isValidBlockType(name) {
-	const validBlockTypes = registeredAcfBlocks;
-	const valid = validBlockTypes.includes(name);
+	const valid = name.substr(0, 4) === 'acf/';
 	
 	return valid;
 	
@@ -84,10 +81,7 @@ function addSaveProps(extraProps, blockType, attributes) {
 			column_width: attributes.column_width,
 			items_break_point: attributes.items_break_point
 		});
-		console.log('THIS LOG');
-		console.log({defaults, extraProps});
 		extraProps = assign(extraProps, defaults);
-		
 	}
 	
 	return extraProps;

@@ -20,7 +20,7 @@ export const coreAllowedContainer = [
 	'core/paragraph',
 	'core/columns',
 	'atomic-blocks/ab-accordion',
-	'atomic-blocks/ab-testimonial',
+	'atomic-blocks/ab-testimonial'
 ];
 
 
@@ -46,9 +46,9 @@ export const layoutAttributes = {
 		default: 'align-items-start'
 	},
 	fluid_items: {
-		type: 'boolean',
+		type: 'string',
 		meta: 'fluid_items',
-		default: true
+		default: 'true'
 	},
 	columns: {
 		type: 'number',
@@ -91,5 +91,6 @@ export function getBlockConfig(block = null) {
 			attributes: layoutAttributes
 		};
 	}
+	
 	return blockAttributes[block];
 }

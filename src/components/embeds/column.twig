@@ -1,9 +1,17 @@
 <!-- src/components/embeds/column.twig -->
-{#{% if ('fluid_items' | block_global_setting) %}#}
-{#<div class="col {{ 'items_break_point' | block_global_setting(block) }}">#}
-    {#{% else %}#}
-<div class="{{ ('fluid_items' | block_global_setting) ? 'col ' : '' }}
-            {{ 'items_break_point' | block_global_setting }}{{ ('columns' | block_global_setting) > 0 ? ('-' ~ ('columns' | block_global_setting)) : '' }}">
-    {#{% endif %}#}
+{% set bp = ('items_break_point' | block_global_setting) %}
+{% set col = ('columns' | block_global_setting) %}
+
+{# This could probably be refactored #}
+{% if col == 0 and bp != 'col-fluid' %}
+    {% set colClass = bp %}
+{% elseif col > 0 and bp == 'col-fluid' %}
+    {% set colClass = 'col-' ~ col %}
+{% else %}
+    {% set colClass = (col > 0 ? (bp ~ ' ' ~ bp ~ '-' ~ col) :  'col') %}
+{% endif %}
+
+<div class="{{ colClass }}"
+     data-columns="{{ ('columns' | block_global_setting) }}">
     {% block content %}{% endblock %}
 </div>

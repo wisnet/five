@@ -80,7 +80,7 @@ function wisnet_allowed_block_types($allowed_blocks) {
 		'core/file',
 		'core/freeform',
 		'core/html',
-//		'core/media-text',
+		//		'core/media-text',
 		'core/latest-comments',
 		'core/latest-posts',
 		'core/missing',
@@ -103,9 +103,9 @@ function wisnet_allowed_block_types($allowed_blocks) {
 		'core/media-text',
 	];
 
-//	$allowed = array_diff($disallowed, $allowed_blocks);
-//
-//	p($allowed_blocks, $disallowed, $allowed);
+	//	$allowed = array_diff($disallowed, $allowed_blocks);
+	//
+	//	p($allowed_blocks, $disallowed, $allowed);
 
 	//	return $allowed;
 	return $allowed;

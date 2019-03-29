@@ -11,7 +11,6 @@
 namespace wisnet\Block\Controller;
 
 class Slideshow extends Base {
-
 	protected $name = 'slideshow';
 	protected $title = 'Slideshow';
 	protected $description = 'A custom slideshow block.';

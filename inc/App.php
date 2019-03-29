@@ -111,6 +111,7 @@ class App extends Site {
 		wp_register_script('parent-js', get_template_directory_uri() . '/dist/js/app.js', [
 			'jquery',
 			'jquery-ui',
+			'acf-input',
 		], self::VERSION, true);
 		wp_localize_script('parent-js', 'wajax', [
 			'url' => admin_url('admin-ajax.php'),
@@ -137,9 +138,9 @@ class App extends Site {
 	}
 
 	public function register_blocks() {
-//		register_block_type( 'five/testimonial', array(
-//			'style' => 'testimonial',
-//		) );
+		//		register_block_type( 'five/testimonial', array(
+		//			'style' => 'testimonial',
+		//		) );
 	}
 
 	/** This is where you add some context

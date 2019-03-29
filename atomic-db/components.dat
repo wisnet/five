@@ -222,5 +222,13 @@
         "backgroundColor": "",
         "order": -26,
         "has_js": "false"
+    },
+    {
+        "component": "crb",
+        "category": "embeds",
+        "description": "",
+        "backgroundColor": "",
+        "order": -27,
+        "has_js": "false"
     }
 ]

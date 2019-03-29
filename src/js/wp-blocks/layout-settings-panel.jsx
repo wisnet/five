@@ -2,6 +2,8 @@ const {__} = wp.i18n;
 const {Fragment} = wp.element;
 const {PanelBody, SelectControl, ToggleControl, RangeControl} = wp.components;
 const {InspectorControls} = wp.editor;
+const {withSelect} = wp.data;
+
 import {getBlockConfig} from './config/blocks';
 
 
@@ -117,13 +119,48 @@ function panelResponsiveness(props, defaults) {
 			fluid,
 			columns;
 		
+		if (defaults.fluid_items || false) {
+			fluid = <ToggleControl
+				label="Fluid items?"
+				help="If 'True' items will align themselves on the same row with equal width"
+				checked={(attributes.fluid_items || defaults.fluid_items.default) === 'true'}
+				onChange={(val) => {
+					setAttributes({
+						fluid_items: val ? 'true' : 'false'
+					});
+					
+					if (val) {
+						jQuery('#fluid_items').closest('.components-base-control').addClass('disabled');
+						document.getElementById('fluid_items').classList.add('disabled');
+					} else {
+						jQuery('#fluid_items').closest('.components-base-control').removeClass('disabled');
+						document.getElementById('fluid_items').classList.remove('disabled');
+					}
+				}}
+			/>;
+		}
 		if (defaults.items_break_point || false) {
+			const breakPointHelp = {
+				'col-fluid': '',
+				'col': '',
+				'col-sm': '≤565px',
+				'col-md': '≤767px',
+				'col-lg': '≤991px',
+				'col-xl': '≤1199px'
+			};
 			breakPoint = <SelectControl
 				label={__('Items Breakpoint')}
-				help={__('Items will convert to full width after the specified breakpoint')}
+				help={__(
+					attributes.items_break_point === 'col-fluid' ?
+						'Items will always be fluid' :
+						attributes.items_break_point === 'col-xl' ?
+							'Items will always be full width' :
+							'Items will convert to full width on screens ' + breakPointHelp[attributes.items_break_point])
+				}
 				value={attributes.items_break_point || defaults.items_break_point.default}
 				options={[
-					{label: 'None', value: 'col'},
+					{label: 'None', value: 'col-fluid'},
+					{label: 'Extra Small', value: 'col'},
 					{label: 'Small', value: 'col-sm'},
 					{label: 'Medium', value: 'col-md'},
 					{label: 'Large', value: 'col-lg'},
@@ -135,42 +172,60 @@ function panelResponsiveness(props, defaults) {
 					});
 				}} />;
 		}
-		if (defaults.fluid_items || false) {
-			fluid = <ToggleControl
-				label="Fluid items?"
-				help="If 'True' items will align themselves on the same row with equal width"
-				checked={attributes.fluid_items || defaults.fluid_items.default}
-				onChange={(val) => {
+		if (defaults.columns || false) {
+			const columnsHelp = {
+				0: 'Columns width will be calculated',
+				1: '1/12',
+				2: '1/8',
+				3: '1/4',
+				4: '1/3',
+				5: '5/12',
+				6: 'half',
+				7: '7/12',
+				8: '3/4',
+				9: '2/3',
+				10: '11/12',
+				11: 'the full width'
+			};
+			columns = <RangeControl
+				id={'fluid_items'}
+				label="Column Width"
+				help={__(
+					attributes.columns == 0 ?
+						columnsHelp[0] :
+						'Columns with be ' + columnsHelp[attributes.columns] + ' of the container space'
+				)}
+				value={attributes.columns || defaults.columns.default}
+				className={attributes.column_width_disabled}
+				min={0}
+				max={12}
+				step={1}
+				onChange={(nextValue) => {
 					setAttributes({
-						fluid_items: val
+						columns: nextValue
 					});
 				}}
 			/>;
 		}
-		if (defaults.columns || false) {
-			columns =
-				<RangeControl
-					label="Column Width"
-					value={attributes.columns || defaults.columns.default}
-					min={0}
-					max={12}
-					onChange={(nextValue) => {
-						setAttributes({
-							columns: nextValue
-						});
-					}}
-				/>;
-		}
+		
 		return (
 			<PanelBody title={__('Responsiveness')}
 			           initialOpen={false}>
+				{/*{fluid}*/}
 				{breakPoint}
-				{fluid}
 				{columns}
 			</PanelBody>
 		);
 	}
 }
+
+const applyWithSelect = withSelect((select) => {
+	console.log({select});
+	
+	return {
+		column_width_disabled: false
+	};
+});
 
 export default function editForm(props = {}, BlockEdit = false) {
 	const {panel, attributes} = getBlockConfig(props.name);

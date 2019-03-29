@@ -18,17 +18,13 @@ namespace wisnet\Block\View;
  */
 class Base {
 	/** @var array */
+	private $block;
+	/** @var array */
 	protected $fields = [];
 	/** @var array */
 	protected $settings = [];
-	/**
-	 * @var array
-	 * Default settings for the block
-	 * These settings should match the settings
-	 * defined in:
-	 * /wp-content/themes/wisnet/src/js/wp-blocks/settings/layoutSettings.js
-	 */
-	protected $defaultSettings = [
+
+	protected $globalSettings = [
 		'container' => 'container',
 		'gutters' => 'md-gutters',
 		'alignment_horizontal' => 'justify-content-start',
@@ -37,26 +33,18 @@ class Base {
 		'columns' => 0,
 		'items_break_point' => 'col-sm',
 	];
+	/**
+	 * Default settings for blocks
+	 * @var array
+	 */
+	protected $defaultSettings = [];
+	protected $booleanSettings = [];
 
-	public function __construct(array $acfBlock, array $fields) {
-		if ($fields) {
-			$this->mapper($fields);
-		}
-		/**
-		 * Add all the default settings to the settings
-		 * array. This must be done after the `fields`
-		 * in case the `fields` contain a "settings" field
-		 */
-		foreach ($this->defaultSettings as $key => $val) {
-			$this->addSetting($key, $val);
-		}
-		if ($acfBlock) {
-			foreach ($acfBlock as $key => $val) {
-				if (array_key_exists($key, $this->defaultSettings)) {
-					$this->addSetting($key, $val);
-				}
-			}
-		}
+	public function __construct(array $block, array $fields) {
+		$this->block = $block;
+		$this->mapper($fields);
+
+		$this->init();
 	}
 
 	/**
@@ -72,6 +60,52 @@ class Base {
 			$method = str_replace(['-', '_'], '', 'set' . $key);
 			if (method_exists($this, $method)) {
 				call_user_func([$this, $method], $val);
+			}
+		}
+	}
+
+	/**
+	 * @since 0.2.0
+	 */
+	public function init() {
+		/**
+		 * Add all the default settings to the settings
+		 * array. This must be done after the `fields`
+		 * in case the `fields` contain a "settings" field
+		 */
+		$settings = array_merge($this->globalSettings, $this->defaultSettings);
+		foreach ($settings as $key => $val) {
+			$this->addSetting($key, $val);
+		}
+		if ($this->block) {
+			foreach ($this->block as $key => $val) {
+				if (array_key_exists($key, $settings)) {
+					$this->addSetting($key, $val);
+				}
+			}
+		}
+		if ($this->getFields()) {
+			foreach ($this->getFields() as $key => $val) {
+				if (array_key_exists($key, $settings)) {
+					$this->addSetting($key, $val);
+				}
+			}
+		}
+		$this->fixBooleanSettings();
+	}
+
+	/**
+	 * Gutenberg is having a hard time saving boolean properties to blocks
+	 * This method corrects those issues when a string is save as what will
+	 * equate to a boolean value
+	 *
+	 * @see http://php.net/manual/en/filter.filters.validate.php for acceptable TRUE values
+	 */
+	protected function fixBooleanSettings() {
+		foreach ($this->booleanSettings as $setting) {
+			$val = $this->getSetting($setting);
+			if ($val) {
+				$this->addSetting($setting, filter_var($val, FILTER_VALIDATE_BOOLEAN));
 			}
 		}
 	}

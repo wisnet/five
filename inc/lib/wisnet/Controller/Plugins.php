@@ -33,7 +33,7 @@ class Plugins {
 	 *
 	 * This function is hooked into `tgmpa_register`, which is fired on the WP `init` action on priority 10.
 	 */
-	function register_required_plugins() {
+	static function register_required_plugins() {
 		/*
 		 * Array of plugin arrays. Required keys are name and slug.
 		 * If the source is NOT from the .org repo, then source is also required.

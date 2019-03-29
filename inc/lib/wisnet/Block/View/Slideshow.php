@@ -13,10 +13,26 @@ namespace wisnet\Block\View;
 class Slideshow extends Base {
 	use \wisnet\Block\Setting\Layout;
 
-	public function __construct(array $acfBlock, array $fields = []) {
-		$this->defaultSettings['container'] = 'container-fluid';
-		$this->defaultSettings['gutters'] = 'no-gutters';
-		parent::__construct($acfBlock, $fields);
+	//	protected $booleanSettings = [
+	//		'autoplay',
+	//		'controls',
+	//		'indicators',
+	//		'pause_on_hover',
+	//		'wrap',
+	//	];
+
+	public function __construct(array $block, array $fields = []) {
+		$this->globalSettings['container'] = 'container-fluid';
+		$this->globalSettings['gutters'] = 'no-gutters';
+		$this->defaultSettings['autoplay'] = true;
+		$this->defaultSettings['interval'] = 7000;
+		$this->defaultSettings['controls'] = true;
+		$this->defaultSettings['indicators'] = true;
+		$this->defaultSettings['pause_on_hover'] = true;
+		$this->defaultSettings['wrap'] = true;
+		$this->defaultSettings['height'] = 0;
+
+		parent::__construct($block, $fields);
 	}
 
 }

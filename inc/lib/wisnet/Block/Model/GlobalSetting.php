@@ -227,6 +227,7 @@ class GlobalSetting {
 
 		$this->setBlock($block);
 
+
 		if (is_array($setting)) {
 			foreach ($setting as $s) {
 				if (!empty($block->getSetting($s))) {

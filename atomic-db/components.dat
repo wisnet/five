@@ -146,25 +146,25 @@
     {
         "component": "container",
         "category": "embeds",
-        "description": "",
+        "description": "Bootstrap 4 container",
         "backgroundColor": "",
-        "order": -17,
+        "order": 1,
         "has_js": "false"
     },
     {
         "component": "row",
         "category": "embeds",
-        "description": "",
+        "description": "Bootstrap 4 row",
         "backgroundColor": "",
-        "order": -18,
+        "order": 2,
         "has_js": "false"
     },
     {
         "component": "column",
         "category": "embeds",
-        "description": "",
+        "description": "Bootstrap 4 column",
         "backgroundColor": "",
-        "order": -19,
+        "order": 3,
         "has_js": "false"
     },
     {
@@ -226,9 +226,9 @@
     {
         "component": "crb",
         "category": "embeds",
-        "description": "",
+        "description": "Container > Row > Column > Block\n\nIf the block is a basic block and does have content that splits into multiple columns, then this simple embed can be used the the template.",
         "backgroundColor": "",
-        "order": -27,
+        "order": 0,
         "has_js": "false"
     }
 ]

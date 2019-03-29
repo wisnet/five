@@ -1,16 +1,21 @@
 <!-- src/components/embeds/crb.twig -->
+{% set bp = ('items_break_point' | block_global_setting) %}
+{% set col = ('columns' | block_global_setting) %}
 
-{% embed 'container.twig' %}
-    {% block content %}
-        {% embed 'row.twig' %}
-            {% block content %}
-                {% embed 'column.twig' %}
-                    {% block content %}
-                        {% block crb %}
-                        {% endblock %}
-                    {% endblock %}
-                {% endembed %}
-            {% endblock %}
-        {% endembed %}
-    {% endblock %}
-{% endembed %}
+{# This could probably be refactored #}
+{% if col == 0 and bp != 'col-fluid' %}
+    {% set colClass = bp %}
+{% elseif col > 0 and bp == 'col-fluid' %}
+    {% set colClass = 'col-' ~ col %}
+{% else %}
+    {% set colClass = (col > 0 ? (bp ~ ' ' ~ bp ~ '-' ~ col) :  'col') %}
+{% endif %}
+
+<div class="{{ ['container', 'gutters'] | block_global_setting }}">
+    <div class="row {{ ['alignment_vertical', 'alignment_horizontal', 'fluid_items'] | block_global_setting(block) }}">
+        <div class="{{ colClass }}"
+             data-columns="{{ ('columns' | block_global_setting) }}">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+</div>

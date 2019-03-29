@@ -3,82 +3,74 @@
 
 {% block content %}
     {% if fields.slides %}
-        {% embed 'container.twig' %}
+        {% embed 'crb.twig' %}
             {% block content %}
-                {% embed 'row.twig' %}
-                    {% block content %}
-                        {% embed 'column.twig' %}
-                            {% block content %}
-                                <div id="carousel-{{ acf_block.id }}"
-                                     class="carousel slide"
-                                     data-interval="{{ block.getSetting('interval') }}"
-                                     data-wrap="{{ block.getSetting('wrap') ? 'true' : 'false' }}"
-                                     {% if block.getSetting('autoplay') %}data-ride="carousel"{% endif %}
-                                        {% if not block.getSetting('pause_on_hover') %}data-pause="false"{% endif %}
-                                >
-                                    <div class="carousel-inner">
-                                        {% set i = 0 %}
-                                        {% for slide in fields.slides %}
-                                            {% set i = i + 1 %}
-                                            <div class="carousel-item item__{{ slide.image.file.id }} item__n-{{ i }}{% if loop.index == 1 %} active{% endif %}">
-                                                {% if true %}
-                                                    <div class="photo-blur slideshow__photo-blur"
-                                                         style="background-image: url({{ slide.image.file.url }});">
-                                                    </div>
-                                                {% endif %}
-                                                <style>
-                                                    {% if slide.image.blur_amount > 0 %}
-                                                    .item__n-{{ i }} .photo-blur {
-                                                        filter: blur({{ slide.image.blur_amount ?: 35 }}px);
-                                                    }
-
-                                                    {% endif %}
-                                                    {% if true or slide.image.soften_edges %}
-                                                    .item__n-{{ i }} img {
-                                                        box-shadow: 0 0 8px 8px white inset;
-                                                    }
-
-                                                    {% endif %}
-                                                </style>
-                                                <img class="d-block img-fluid" src="{{ slide.image.file.url }}" alt="{{ slide.image.file.title }}">
-
-                                                <div class="carousel-caption d-none d-md-block">
-                                                    <h5>{{ slide.caption.title }}</h5>
-                                                    <p>{{ slide.caption.caption }}</p>
-                                                </div>
-                                            </div>
-                                        {% endfor %}
+                <div id="carousel-{{ acf_block.id }}"
+                     class="carousel slide"
+                     data-interval="{{ block.getSetting('interval') }}"
+                     data-wrap="{{ block.getSetting('wrap') ? 'true' : 'false' }}"
+                     {% if block.getSetting('autoplay') %}data-ride="carousel"{% endif %}
+                        {% if not block.getSetting('pause_on_hover') %}data-pause="false"{% endif %}
+                >
+                    <div class="carousel-inner">
+                        {% set i = 0 %}
+                        {% for slide in fields.slides %}
+                            {% set i = i + 1 %}
+                            <div class="carousel-item item__{{ slide.image.file.id }} item__n-{{ i }}{% if loop.index == 1 %} active{% endif %}">
+                                {% if true %}
+                                    <div class="photo-blur slideshow__photo-blur"
+                                         style="background-image: url({{ slide.image.file.url }});">
                                     </div>
-                                    {% if block.getSetting('controls') and (fields.slides|length) > 1 %}
-                                        <a class="carousel-control-prev" href="#carousel-{{ acf_block.id }}" role="button" data-slide="prev">
-                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                            <span class="sr-only">Previous</span>
-                                        </a>
-                                        <a class="carousel-control-next" href="#carousel-{{ acf_block.id }}" role="button" data-slide="next">
-                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                            <span class="sr-only">Next</span>
-                                        </a>
-                                        {% if block.getSetting('indicatros') %}
-                                            <ol class="carousel-indicators">
-                                                {% for slide in fields.slides %}
-                                                    <li data-target="#carousel-{{ acf_block.id }}" data-slide-to="{{ loop.index0 }}"{% if loop.index == 1 %} class="active"{% endif %}></li>
-                                                {% endfor %}
-                                            </ol>
-                                        {% endif %}
+                                {% endif %}
+                                <style>
+                                    {% if slide.image.blur_amount > 0 %}
+                                    .item__n-{{ i }} .photo-blur {
+                                        filter: blur({{ slide.image.blur_amount ?: 35 }}px);
+                                    }
+
                                     {% endif %}
-                                    {% if block.getField('height') > 0 %}
-                                        <style>
-                                            #carousel-{{ acf_block.id }} .carousel-item {
-                                                height: {{ block.getSetting('height') }}px;
-                                                min-height: auto;
-                                            }
-                                        </style>
+                                    {% if true or slide.image.soften_edges %}
+                                    .item__n-{{ i }} img {
+                                        box-shadow: 0 0 8px 8px white inset;
+                                    }
+
                                     {% endif %}
+                                </style>
+                                <img class="d-block img-fluid" src="{{ slide.image.file.url }}" alt="{{ slide.image.file.title }}">
+
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>{{ slide.caption.title }}</h5>
+                                    <p>{{ slide.caption.caption }}</p>
                                 </div>
-                            {% endblock %}
-                        {% endembed %}
-                    {% endblock %}
-                {% endembed %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                    {% if block.getSetting('controls') and (fields.slides|length) > 1 %}
+                        <a class="carousel-control-prev" href="#carousel-{{ acf_block.id }}" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carousel-{{ acf_block.id }}" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                        {% if block.getSetting('indicatros') %}
+                            <ol class="carousel-indicators">
+                                {% for slide in fields.slides %}
+                                    <li data-target="#carousel-{{ acf_block.id }}" data-slide-to="{{ loop.index0 }}"{% if loop.index == 1 %} class="active"{% endif %}></li>
+                                {% endfor %}
+                            </ol>
+                        {% endif %}
+                    {% endif %}
+                    {% if block.getField('height') > 0 %}
+                        <style>
+                            #carousel-{{ acf_block.id }} .carousel-item {
+                                height: {{ block.getSetting('height') }}px;
+                                min-height: auto;
+                            }
+                        </style>
+                    {% endif %}
+                </div>
             {% endblock %}
         {% endembed %}
     {% endif %}

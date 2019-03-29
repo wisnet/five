@@ -169,6 +169,9 @@ class Base {
 	}
 
 	/**
+	 *
+	 * @since 0.1.0
+	 *
 	 * @param array $block
 	 */
 	public static function addRegisteredBlock(array $block) {
@@ -183,6 +186,8 @@ class Base {
 
 	/**
 	 * Register an ACF field group as a Gutenberg block
+	 *
+	 * @since 0.1.0
 	 */
 	public function register() {
 		$block = [
@@ -202,6 +207,8 @@ class Base {
 
 	/**
 	 * Render an ACF field group as a Gutenberg block
+	 *
+	 * @since 0.1.0
 	 *
 	 * @param $block
 	 */

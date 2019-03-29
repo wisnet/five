@@ -13,6 +13,9 @@ use wisnet\Block;
 
 add_action('init', 'wisnet_acf_blocks', 0, 10);
 
+/**
+ * Instantiate and register theme blocks
+ */
 function wisnet_acf_blocks() {
 	foreach (array_values(App::get_acf_blocks()) as $block) {
 		$blockClass = 'wisnet\Block\Controller\\' . $block;
@@ -25,6 +28,12 @@ function wisnet_acf_blocks() {
 
 add_filter('allowed_block_types', 'wisnet_allowed_block_types');
 
+/**
+ * We have to explicitly let WP know which blocks are allowed
+ *
+ * @param $allowed_blocks
+ * @return array
+ */
 function wisnet_allowed_block_types($allowed_blocks) {
 	$allowed = array_merge([
 		'core/paragraph',
@@ -100,6 +109,9 @@ function wisnet_allowed_block_types($allowed_blocks) {
 		'core/video',
 	], array_keys(App::get_acf_blocks()));
 
+	/**
+	 * Hopefully they allow this in the future
+	 */
 	$disallowed = [
 		'core/media-text',
 	];

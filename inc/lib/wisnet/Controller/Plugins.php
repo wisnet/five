@@ -43,6 +43,7 @@ class Plugins {
 				'name' => 'Advanced Custom Fields', // The plugin name.
 				'slug' => 'advanced-custom-fields-pro', // The plugin slug (typically the folder name).
 				'required' => true, // If false, the plugin is only 'recommended' instead of required.
+				'source' => 'http://secured-site7.com/wisnet-five-plugins/advanced-custom-fields-pro.5.8.0-beta4.1.zip',
 			],
 			[
 				'name' => 'Atomic Blocks', // The plugin name.
@@ -68,7 +69,7 @@ class Plugins {
 				'name' => 'Relevanssi',
 				'slug' => 'relevanssi',
 				'required' => false,
-				'source' => 'https://github.com/wisnet/five-plugins/raw/master/relevanssi.zip',
+				'source' => 'http://secured-site7.com/wisnet-five-plugins/relevanssi.zip',
 			],
 			[
 				'name' => 'The Events Calendar',
@@ -91,7 +92,7 @@ class Plugins {
 				'name' => 'Gravity Forms Pro',
 				'slug' => 'gravityforms',
 				'required' => false,
-				'source' => 'https://github.com/wisnet/five-plugins/raw/master/gravityforms.zip',
+				'source' => 'http://secured-site7.com/wisnet-five-plugins/gravityforms.zip',
 			],
 			// This is an example of the use of 'is_callable' functionality. A user could - for instance -
 			// have WPSEO installed *or* WPSEO Premium. The slug would in that last case be different, i.e.

@@ -34,6 +34,8 @@
   "require": {
     "wpackagist-plugin/timber-library": "1.*",
     "nesbot/carbon": "^1.36",
-    "tgmpa/tgm-plugin-activation": "^2.6"
+    "duncan3dc/dusk": "^1.0"
+  },
+  "require-dev": {
   }
 }

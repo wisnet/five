@@ -24,6 +24,8 @@ node_modules
 dist/*/*.map
 mix-manifest.json
 
+tests/screenshots/*
+
 ## Large/disallowed file types ##
 ## a CDN should be used for these
 *.hqx

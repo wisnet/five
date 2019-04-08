@@ -27,6 +27,14 @@ define('ATOMIC_SIDEBAR', ATOMIC_SIDEBARS);
 define('ATOMIC_LAYOUT', ATOMIC . 'layout');
 define('ATOMIC_BLOCKS', ATOMIC . 'blocks');
 
+if (file_exists(__DIR__ . '/vendor/autoload.php')) {
+	require_once(__DIR__ . '/vendor/autoload.php');
+}
+else {
+	echo '<div class="error"><p>Composer packages have not been installed. Do this by running <code>composer install</code> inside the the `five` theme directory</p></div>';
+	return;
+}
+
 /**
  * This needs to run before everything so we can easily install the Timber plugin
  */
@@ -59,7 +67,6 @@ Timber::$autoescape = false;
 
 require_once(__DIR__ . '/inc/App.php');
 require_once(__DIR__ . '/inc/Util.php');
-require_once(__DIR__ . '/vendor/autoload.php');
 require_once(__DIR__ . '/inc/lib/DebugAlias.php');
 require_once(__DIR__ . '/inc/acf.php');
 require_once(__DIR__ . '/inc/custom-post-types.php');

@@ -1,0 +1,8 @@
+parameters:
+  wordpress.driver.blackbox.class: PaulGibbs\WordpressBehatExtension\Driver\BlackboxDriver
+
+services:
+  wordpress.driver.blackbox:
+    class: "%wordpress.driver.blackbox.class%"
+    tags:
+      - { name: wordpress.driver, alias: blackbox }

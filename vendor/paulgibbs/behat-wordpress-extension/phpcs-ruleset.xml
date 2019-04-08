@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<ruleset name="WordHat coding standards">
+  <rule ref="PSR1" />
+  <rule ref="PSR2" />
+
+  <rule ref="PSR2.Methods.FunctionCallSignature.SpaceBeforeCloseBracket">
+    <severity>5</severity>
+  </rule>
+  <rule ref="PSR2.Methods.FunctionCallSignature.SpaceAfterOpenBracket">
+    <severity>5</severity>
+  </rule>
+
+  <!-- Always put spaces after commas, and on both sides of logical, comparison, string and assignment operators. -->
+  <rule ref="Squiz.Strings.ConcatenationSpacing">
+    <properties>
+      <property name="spacing" value="1"/>
+      <property name="ignoreNewlines" value="true"/>
+    </properties>
+  </rule>
+
+  <!-- If you're not evaluating anything in the string, use single quotes. -->
+  <rule ref="Squiz.Strings.DoubleQuoteUsage"/>
+  <rule ref="Squiz.Strings.DoubleQuoteUsage.ContainsVar">
+      <severity>0</severity>
+  </rule>
+
+  <!-- Braces shall be used for all blocks. -->
+  <rule ref="Squiz.ControlStructures.ControlSignature" />
+
+  <!-- Never use shorthand PHP start tags. Always use full PHP tags. -->
+  <rule ref="Generic.PHP.DisallowShortOpenTag"/>
+  <rule ref="Generic.PHP.DisallowAlternativePHPTags"/>
+
+  <!-- Remove trailing whitespace at the end of each line of code. -->
+  <rule ref="Squiz.WhiteSpace.SuperfluousWhitespace"/>
+
+  <!-- When type casting, do it like so: $foo = (boolean) $bar; -->
+  <rule ref="Generic.Formatting.SpaceAfterCast"/>
+  <rule ref="Squiz.WhiteSpace.CastSpacing" />
+
+  <!-- In general, readability is more important than cleverness or brevity. -->
+  <rule ref="Squiz.PHP.DisallowMultipleAssignments"/>
+  <rule ref="Generic.Formatting.DisallowMultipleStatements"/>
+
+  <!-- No error control operator. -->
+  <rule ref="Generic.PHP.NoSilencedErrors" />
+
+  <!-- Discourage use of the backtick operator (execution of shell commands). -->
+  <rule ref="Generic.PHP.BacktickOperator"/>
+
+  <!-- Disallow size functions in loops. -->
+  <rule ref="Squiz.PHP.DisallowSizeFunctionsInLoops" />
+
+  <!-- Warns about code that can never been executed. -->
+  <rule ref="Squiz.PHP.NonExecutableCode"/>
+
+  <!-- Tests that the ++ operators are used when possible and not used when it makes the code confusing. -->
+  <rule ref="Squiz.Operators.IncrementDecrementUsage"/>
+
+  <!-- Checks to ensure that the logical operators 'and' and 'or' are not used. -->
+  <rule ref="Squiz.Operators.ValidLogicalOperators"/>
+
+  <!-- Checks that duplicate arguments are not used in function declarations. -->
+  <rule ref="Squiz.Functions.FunctionDuplicateArgument"/>
+
+  <!-- No commented-out code. -->
+  <rule ref="Squiz.PHP.CommentedOutCode" />
+
+  <!-- Class doc comments. -->
+  <rule ref="Squiz.Commenting.ClassComment" />
+</ruleset>

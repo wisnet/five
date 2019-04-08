@@ -1,0 +1,12 @@
+vendor/
+/site/
+.vscode/
+/report/
+
+.DS_Store
+.couscous
+npm-debug.log
+wp-cli.yml
+/selenium.log
+
+/behat.yml

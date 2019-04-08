@@ -1,0 +1,95 @@
+# Project information
+site_name: 'WordHat - Behat for WordPress'
+site_description: 'WordHat is a Behat extension, providing WordPress-specific functionality for common testing scenarios specific to WordPress sites.'
+site_author: 'Paul Gibbs'
+site_url: 'https://wordhat.info/'
+copyright: 'Copyright &copy; 2016-present, Paul Gibbs'
+
+# Repository
+repo_name: 'WordHat'
+repo_url: 'https://github.com/paulgibbs/behat-wordpress-extension'
+edit_uri: null
+
+# Options
+theme:
+  name: 'material'
+  custom_dir: 'docs/theme'
+  favicon: 'img/favicon.png'
+  logo: 'img/mark.svg'
+  palette:
+    primary: 'blue'
+    accent: 'blue'
+  font:
+    text: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif'
+    code: 'Consolas, Monaco, monospace'
+  feature:
+    tabs: true
+
+extra:
+  social:
+    - type: 'github'
+      link: 'https://github.com/paulgibbs/behat-wordpress-extension'
+    - type: 'twitter'
+      link: 'https://twitter.com/pgibbs'
+
+extra_css:
+  - 'stylesheets/style.css'
+
+use_directory_urls: false
+
+google_analytics:
+  - 'UA-88402256-1'
+  - 'auto'
+
+markdown_extensions:
+  - admonition
+  - footnotes
+  - meta
+  - smarty
+  - toc:
+      permalink: true
+  - codehilite:
+      guess_lang: false
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.magiclink
+  - pymdownx.inlinehilite
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - mdx_gh_links:
+      user: paulgibbs
+      repo: behat-wordpress-extension
+
+# Documentation
+nav:
+  - Introduction: index.md
+  - Getting Started:
+    - Installation: getting-started/installation.md
+    - Intro to Behat: getting-started/behat-intro.md
+    - WordHat: getting-started/wordhat-intro.md
+  - Features:
+    - Overview: features/overview.md
+  - Configuration:
+    - Settings: configuration/settings.md
+  - Support:
+    - FAQ: recipes/faq.md
+    - Database Content: recipes/content.md
+    - Error Codes:
+      - Overview: recipes/errors/overview.md
+      - Errors W000-099: recipes/errors/w000-099.md
+      - Errors W100-199: recipes/errors/w100-199.md
+      - Errors W200-299: recipes/errors/w200-299.md
+      - Errors W400-499: recipes/errors/w400-499.md
+      - Errors W500-599: recipes/errors/w500-599.md
+      - Errors W600-699: recipes/errors/w600-699.md
+      - Errors W800-899: recipes/errors/w800-899.md
+  - Open Source:
+    - Contributing: contributing/open-source.md
+    - Build Process: contributing/build.md
+    - Credits: credits.md
+    - License: license.md
+  - News: changelog.md
+  - Credits: credits.md
+  - License: license.md

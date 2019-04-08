@@ -1,0 +1,82 @@
+parameters:
+  wordpress.driver.wpphp.class: PaulGibbs\WordpressBehatExtension\Driver\WpphpDriver
+  wordpress.element.wpphp.cache.class: PaulGibbs\WordpressBehatExtension\Driver\Element\Wpphp\CacheElement
+  wordpress.element.wpphp.comment.class: PaulGibbs\WordpressBehatExtension\Driver\Element\Wpphp\CommentElement
+  wordpress.element.wpphp.content.class: PaulGibbs\WordpressBehatExtension\Driver\Element\Wpphp\ContentElement
+  wordpress.element.wpphp.database.class: PaulGibbs\WordpressBehatExtension\Driver\Element\Wpphp\DatabaseElement
+  wordpress.element.wpphp.plugin.class: PaulGibbs\WordpressBehatExtension\Driver\Element\Wpphp\PluginElement
+  wordpress.element.wpphp.term.class: PaulGibbs\WordpressBehatExtension\Driver\Element\Wpphp\TermElement
+  wordpress.element.wpphp.theme.class: PaulGibbs\WordpressBehatExtension\Driver\Element\Wpphp\ThemeElement
+  wordpress.element.wpphp.user.class: PaulGibbs\WordpressBehatExtension\Driver\Element\Wpphp\UserElement
+  wordpress.element.wpphp.widget.class: PaulGibbs\WordpressBehatExtension\Driver\Element\Wpphp\WidgetElement
+
+services:
+  wordpress.driver.wpphp:
+    class: "%wordpress.driver.wpphp.class%"
+    arguments:
+      - "%wordpress.path%"
+    tags:
+      - { name: wordpress.driver, alias: wpphp }
+
+  wordpress.element.wpphp.cache:
+    class: "%wordpress.element.wpphp.cache.class%"
+    arguments:
+      - "@wordpress.wordpress"
+    tags:
+      - { name: wordpress.element, alias: cache, driver: wpphp }
+
+  wordpress.element.wpphp.comment:
+    class: "%wordpress.element.wpphp.comment.class%"
+    arguments:
+      - "@wordpress.wordpress"
+    tags:
+      - { name: wordpress.element, alias: , driver: wpphp }
+
+  wordpress.element.wpphp.content:
+    class: "%wordpress.element.wpphp.content.class%"
+    arguments:
+      - "@wordpress.wordpress"
+    tags:
+      - { name: wordpress.element, alias: content, driver: wpphp }
+
+  wordpress.element.wpphp.database:
+    class: "%wordpress.element.wpphp.database.class%"
+    arguments:
+      - "@wordpress.wordpress"
+    tags:
+      - { name: wordpress.element, alias: database, driver: wpphp }
+
+  wordpress.element.wpphp.plugin:
+    class: "%wordpress.element.wpphp.plugin.class%"
+    arguments:
+      - "@wordpress.wordpress"
+    tags:
+      - { name: wordpress.element, alias: plugin, driver: wpphp }
+
+  wordpress.element.wpphp.term:
+    class: "%wordpress.element.wpphp.term.class%"
+    arguments:
+      - "@wordpress.wordpress"
+    tags:
+      - { name: wordpress.element, alias: term, driver: wpphp }
+
+  wordpress.element.wpphp.theme:
+    class: "%wordpress.element.wpphp.theme.class%"
+    arguments:
+      - "@wordpress.wordpress"
+    tags:
+      - { name: wordpress.element, alias: theme, driver: wpphp }
+
+  wordpress.element.wpphp.user:
+    class: "%wordpress.element.wpphp.user.class%"
+    arguments:
+      - "@wordpress.wordpress"
+    tags:
+      - { name: wordpress.element, alias: user, driver: wpphp }
+
+  wordpress.element.wpphp.widget:
+    class: "%wordpress.element.wpphp.widget.class%"
+    arguments:
+      - "@wordpress.wordpress"
+    tags:
+      - { name: wordpress.element, alias: widget, driver: wpphp }

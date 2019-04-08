@@ -1,0 +1,55 @@
+/* Hide title on homepage */
+h1[data-page="Home"] {
+  clip: rect(1px,1px,1px,1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute !important;
+  width: 1px;
+  word-wrap: normal !important;
+}
+
+.index-logo {
+  border: 0;
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+body .md-nav {
+  font-size: 1.6rem;
+}
+
+[data-md-color-primary=blue] .md-main .md-typeset a {
+  color: #0b74ca;
+}
+
+html .md-source__facts {
+  opacity: 1;
+  font-size: 1.3rem;
+  font-weight: 400;
+}
+
+html .md-footer-copyright {
+  color: #8d8d8d;
+}
+
+html .md-typeset table:not([class]) {
+  font-size: 1.4rem;
+}
+
+.md-sidebar {
+  height: 100% !important;
+}
+
+.screen-reader-text {
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute !important;
+  width: 1px;
+  word-wrap: normal !important; /* Many screen reader and browser combinations announce broken words as they would appear visually. */
+}
+
+.md-typeset table:not([class]) th,
+.md-typeset table:not([class]) td {
+  white-space: nowrap;
+}

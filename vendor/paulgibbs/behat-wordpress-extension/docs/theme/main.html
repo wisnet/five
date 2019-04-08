@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {% if not "\x3ch1 id=" in page.content  %}
+    <h1 data-page="{{ page.title }}">{{ page.title | default(config.site_name, true)}}</h1>
+  {% endif %}
+  {{ page.content }}
+{% endblock %}
+
+{% block fonts %}
+  <style>
+  body, input {
+    font-family: {{ config.extra.get("font", {}).text }};
+  }
+  code, kbd, pre {
+    font-family: {{ config.extra.get("font", {}).code }};
+  }
+  </style>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+{% endblock %}

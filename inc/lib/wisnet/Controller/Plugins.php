@@ -12,10 +12,6 @@ namespace wisnet\Controller;
 
 class Plugins {
 
-	public function __construct() {
-		// parent::__construct();
-	}
-
 	/**
 	 * Register the required plugins for this theme.
 	 *
@@ -66,6 +62,12 @@ class Plugins {
 				'required' => false,
 			],
 			[
+				'name' => 'OAuth2',
+				'slug' => 'oauth2',
+				'required' => false,
+				'source' => 'https://github.com/WP-API/OAuth2/archive/master.zip',
+			],
+			[
 				'name' => 'Relevanssi',
 				'slug' => 'relevanssi',
 				'required' => false,
@@ -73,12 +75,12 @@ class Plugins {
 			],
 			[
 				'name' => 'The Events Calendar',
-				'slug' => 'the - events - calendar',
+				'slug' => 'the-events-calendar',
 				'required' => false,
 			],
 			[
 				'name' => 'Timber',
-				'slug' => 'timber - library',
+				'slug' => 'timber-library',
 				'required' => true,
 			],
 			[

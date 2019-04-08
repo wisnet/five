@@ -7,18 +7,22 @@
  * @package wisnetfive.dev
  * @author Michael Dahlke <mdahlke@wisnet.com>
  */
-namespace Five;
+
+namespace wisnet\Api;
 
 class Api {
 
 	public function __construct() {
+		/**
+		 * Disable the API for non-logged in users
+		 */
+//		add_filter('rest_pre_dispatch', function () {
+//			if (!is_user_logged_in()) {
+//				return new \WP_Error('not-logged-in', 'API Requests are only supported for authenticated requests', ['status' => 401]);
+//			}
+//		});
 
-		add_action( 'rest_api_init', function () {
-			register_rest_route( 'five/v1', '/team/(?P<id>\d+)', array(
-				'methods' => 'GET',
-				'callback' => [Api::class, 'teamMembers'],
-			) );
-		} );
+		new TeamMember();
 	}
 
 }

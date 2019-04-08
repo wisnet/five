@@ -15,6 +15,7 @@ use Timber\Post;
 use Timber\Site;
 use Twig_Extension_StringLoader;
 use Twig_SimpleFilter;
+use wisnet\Api\Api;
 use wisnet\Controller\Ajax;
 use wisnet\Controller\Plugins;
 
@@ -41,7 +42,10 @@ class App extends Site {
 		$this->register_autoload();
 		$this->register_timber();
 		$this->register_acf_block();
-		add_action('tgmpa_register', [Plugins::class, 'register_required_plugins']);
+		$this->registerApi();
+//		add_action('tgmpa_register', [Plugins::class, 'register_required_plugins']);
+		$p = new Plugins();
+		$p->register_required_plugins();
 	}
 
 	/** Add timber support. */
@@ -53,7 +57,7 @@ class App extends Site {
 
 	protected function register_autoload() {
 		spl_autoload_register(function ($class) {
-			$directories = ['Controller', 'Model', 'View', 'Setting', 'Blocks', 'Blocks\View', 'Block\Model', 'Block\Setting'];
+			$directories = ['Controller', 'Model', 'View', 'Setting', 'Blocks', 'Blocks\View', 'Block\Model', 'Block\Setting', 'Api'];
 			$parts = explode('\\', $class);
 
 			if (in_array(strtolower($parts[0]), ['wisnet', 'flash'])) {
@@ -71,6 +75,15 @@ class App extends Site {
 				}
 			};
 		});
+	}
+
+	public function registerApi() {
+		/** @global Api $five_api */
+		global $five_api;
+
+		if (is_rest()) {
+			$five_api = new Api();
+		}
 	}
 
 	public function frontend() {
@@ -95,6 +108,8 @@ class App extends Site {
 		wp_register_script('parent-js', get_template_directory_uri() . '/dist/js/app.js', ['jquery'], PARENT_THEME_VERSION, true);
 		wp_localize_script('parent-js', 'wajax', [
 			'url' => admin_url('admin-ajax.php'),
+			'api_url' => get_rest_url(null, 'five/v1'),
+			'nonce' => wp_create_nonce('wp_rest')
 			//			'registeredAcfBlocks' => json_encode(self::ACF_BLOCKS),
 		]);
 		wp_enqueue_script('parent-js');
@@ -250,9 +265,9 @@ class App extends Site {
 	/**
 	 * Retrieve ACF blocks for Gutenberg editor
 	 *
+	 * @return mixed
 	 * @since 0.2.0
 	 *
-	 * @return mixed
 	 */
 	public static function get_acf_blocks() {
 		return apply_filters('wisnet/get_acf_blocks', self::$ACF_BLOCKS);

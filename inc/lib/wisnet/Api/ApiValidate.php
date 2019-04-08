@@ -16,4 +16,8 @@ class ApiValidate {
 		// parent::__construct();
 	}
 
+	public static function is_numeric($param, $request, $key) {
+		return is_numeric($param);
+	}
+
 }

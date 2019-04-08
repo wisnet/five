@@ -9,6 +9,7 @@
  */
 
 use wisnet\App;
+use wisnet\Controller\Plugins;
 use wisnet\Util;
 
 /** @var string App Version */
@@ -25,6 +26,13 @@ define('ATOMIC_SIDEBARS', ATOMIC . 'sidebars');
 define('ATOMIC_SIDEBAR', ATOMIC_SIDEBARS);
 define('ATOMIC_LAYOUT', ATOMIC . 'layout');
 define('ATOMIC_BLOCKS', ATOMIC . 'blocks');
+
+/**
+ * This needs to run before everything so we can easily install the Timber plugin
+ */
+require_once(__DIR__ . '/inc/lib/class-tgm-plugin-activation.php');
+require_once(__DIR__ . '/inc/lib/wisnet/Controller/Plugins.php');
+add_action('tgmpa_register', [Plugins::class, 'register_required_plugins']);
 
 if (!class_exists('Timber')) {
 	add_action('admin_notices', function () {
@@ -53,7 +61,6 @@ require_once(__DIR__ . '/inc/App.php');
 require_once(__DIR__ . '/inc/Util.php');
 require_once(__DIR__ . '/vendor/autoload.php');
 require_once(__DIR__ . '/inc/lib/DebugAlias.php');
-require_once(__DIR__ . '/inc/lib/class-tgm-plugin-activation.php');
 require_once(__DIR__ . '/inc/acf.php');
 require_once(__DIR__ . '/inc/custom-post-types.php');
 require_once(__DIR__ . '/inc/custom-taxonomies.php');

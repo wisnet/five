@@ -43,9 +43,6 @@ class App extends Site {
 		$this->register_timber();
 		$this->register_acf_block();
 		$this->registerApi();
-//		add_action('tgmpa_register', [Plugins::class, 'register_required_plugins']);
-		$p = new Plugins();
-		$p->register_required_plugins();
 	}
 
 	/** Add timber support. */

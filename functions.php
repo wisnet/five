@@ -9,6 +9,7 @@
  */
 
 use wisnet\App;
+use wisnet\Util;
 
 /** @var string App Version */
 define('PARENT_THEME_VERSION', wp_get_theme()->parent()->Version);
@@ -69,3 +70,6 @@ else {
 
 require_once('inc/blocks.php');
 
+function is_rest() {
+	return Util::is_rest();
+}

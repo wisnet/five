@@ -7,7 +7,7 @@ image:
   name: '$DOCKER_NAME'
   username: '$DOCKER_USERNAME'
   password: '$DOCKER_PASSWORD'
-  email: '$DOCKER_PASSWORD'
+  email: '$DOCKER_EMAIL'
 
 pipelines:
   branches:

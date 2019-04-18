@@ -16,8 +16,8 @@ class TeamMember extends Base {
 	private $endpoint = 'team';
 
 	public function __construct() {
-		parent::__construct();
 		$this->register_routes();
+		parent::__construct();
 	}
 
 	public function register_routes() {

@@ -3,7 +3,11 @@
 # Only use spaces to indent your .yml configuration.
 # -----
 # You can specify a custom docker image from Docker Hub as your build environment.
-image: php:7.2.1
+image:
+  name: '$DOCKER_NAME'
+  username: '$DOCKER_USERNAME'
+  password: '$DOCKER_PASSWORD'
+  email: '$DOCKER_PASSWORD'
 
 pipelines:
   branches:
@@ -12,12 +16,3 @@ pipelines:
         name: Deploy to Github
         script:
           - git push git@github.com:wisnet/five.git master
-    - step:
-        name: Deploy to Production
-        deployment: production
-        caches:
-          - composer
-        script:
-          - apt-get update && apt-get install -y unzip
-          - curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-          - composer install

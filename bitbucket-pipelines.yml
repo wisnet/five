@@ -9,6 +9,10 @@ pipelines:
   branches:
     master:
     - step:
+        name: Deploy to Github
+        script:
+          - git push git@github.com:wisnet/five.git master
+    - step:
         name: Deploy to Production
         deployment: production
         caches:

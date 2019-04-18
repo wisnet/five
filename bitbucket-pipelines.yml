@@ -14,4 +14,4 @@ pipelines:
     - step:
         name: Deploy to Github
         script:
-          - git push git@github.com:wisnet/five.git
+          - git push git@github.com:wisnet/five.git --all

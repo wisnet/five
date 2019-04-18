@@ -4,10 +4,10 @@
 # -----
 # You can specify a custom docker image from Docker Hub as your build environment.
 image:
-  name: '$DOCKER_NAME'
-  username: '$DOCKER_USERNAME'
-  password: '$DOCKER_PASSWORD'
-  email: '$DOCKER_EMAIL'
+  name: $DOCKER_NAME
+  username: $DOCKER_USERNAME
+  password: $DOCKER_PASSWORD
+  email: $DOCKER_EMAIL
 
 pipelines:
   branches:

@@ -80,9 +80,6 @@ class App extends Site {
 
 		if (is_rest()) {
 			$five_api = new Api();
-
-			p($five_api);
-			die();
 		}
 	}
 

@@ -10,8 +10,15 @@
 #  email: $DOCKER_EMAIL
 
 pipelines:
-  default:
-    - step:
-        name: Deploy to Github
-        script:
-          - git push git@github.com:wisnet/five.git --all --tags
+  tags:
+    '**':
+      - step:
+          name: Deploy to Gitbub
+          script:
+           - git push git@github.com:wisnet/five.git $BITBUCKET_TAG
+  branches:
+    '**':
+      - step:
+          name: Deploy to Github
+          script:
+            - git push git@github.com:wisnet/five.git $BITBUCKET_BRANCH

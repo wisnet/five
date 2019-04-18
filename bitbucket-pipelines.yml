@@ -10,9 +10,8 @@
 #  email: $DOCKER_EMAIL
 
 pipelines:
-  branches:
-    master:
+  default:
     - step:
         name: Deploy to Github
         script:
-          - git push git@github.com:wisnet/five.git master
+          - git push git@github.com:wisnet/five.git

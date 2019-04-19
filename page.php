@@ -22,6 +22,9 @@
  */
 
 $context = Timber::get_context();
-$post = new TimberPost();
+$post = do_action('five/context_post');
+if (!$post) {
+	$post = new \Timber\Post();
+}
 $context['post'] = $post;
-Timber::render( array( 'page-' . $post->post_name . '.twig', 'page.twig' ), $context );
+Timber::render(['page-' . $post->post_name . '.twig', 'page.twig'], $context);

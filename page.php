@@ -22,9 +22,13 @@
  */
 
 $context = Timber::get_context();
-$post = do_action('five/context_post');
+
+$post = apply_filters('five/context_post/post', get_queried_object());
+
 if (!$post) {
 	$post = new \Timber\Post();
 }
+
 $context['post'] = $post;
+
 Timber::render(['page-' . $post->post_name . '.twig', 'page.twig'], $context);

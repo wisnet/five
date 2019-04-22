@@ -39,7 +39,7 @@ class Plugins {
 				'name' => 'Advanced Custom Fields', // The plugin name.
 				'slug' => 'advanced-custom-fields-pro', // The plugin slug (typically the folder name).
 				'required' => true, // If false, the plugin is only 'recommended' instead of required.
-				'source' => 'http://secured-site7.com/wisnet-five-plugins/advanced-custom-fields-pro.5.8.0-beta4.1.zip',
+				'source' => 'http://secured-site7.com/wisnet-five-plugins/advanced-custom-fields-pro.zip',
 			],
 			[
 				'name' => 'Atomic Blocks', // The plugin name.

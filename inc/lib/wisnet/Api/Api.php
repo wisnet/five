@@ -25,6 +25,8 @@ class Api {
 		//		});
 
 		$this->addApi(new TeamMember());
+
+		do_action('five/register_api', $this);
 	}
 
 	/**

@@ -21,6 +21,8 @@ class Base extends \WP_REST_Controller {
 
 	public function __construct() {
 		$this->namespace = 'five/' . $this->version;
+		// register new API routes on WordPress rest api init
+		add_action('rest_api_init', [$this, 'register_routes']);
 	}
 
 	public function compileReturnMeta() {

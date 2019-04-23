@@ -10,7 +10,7 @@
     "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "lint": "./node_modules/.bin/eslint ./src/js",
     "add-dist": "git add dist/",
-    "copy-fontawesome": "cp ./node_modules/@fortawesome/fontawesome-free/css/all.css ./dist/css/fontawesome.css && cp -R ./node_modules/@fortawesome/fontawesome-free/webfonts/ ./dist/css/webfonts"
+    "copy-fontawesome": "cp ./node_modules/@fortawesome/fontawesome-free/css/all.css ./dist/css/fontawesome.css && cp -R ./node_modules/@fortawesome/fontawesome-free/webfonts/ ./dist/webfonts"
   },
   "pre-commit": [
     "lint",

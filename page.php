@@ -21,12 +21,14 @@
  * @since    Timber 0.1
  */
 
+use Timber\Post;
+
 $context = Timber::get_context();
 
 $post = apply_filters('five/context_post/post', get_queried_object());
 
-if (!$post) {
-	$post = new \Timber\Post();
+if (!$post || ($post instanceof WP_Post)) {
+	$post = new Post();
 }
 
 $context['post'] = $post;

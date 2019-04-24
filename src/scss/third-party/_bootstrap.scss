@@ -10,6 +10,56 @@ $gutters: (
         'xl': 30px
 );
 
+.container-sm,
+.container-lg {
+  @extend .container;
+}
+
+@include media-breakpoint-up(xs) {
+  .container-sm {
+    max-width: none;
+  }
+  .container-lg {
+    max-width: none;
+  }
+}
+
+@include media-breakpoint-up(sm) {
+  .container-sm {
+    max-width: 500px;
+  }
+  .container-lg {
+    max-width: 580px;
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .container-sm {
+    max-width: 680px;
+  }
+  .container-lg {
+    max-width: 760px;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .container-sm {
+    max-width: 900px;
+  }
+  .container-lg {
+    max-width: 1020px;
+  }
+}
+
+@include media-breakpoint-up(xl) {
+  .container-sm {
+    max-width: 1080px;
+  }
+  .container-lg {
+    max-width: 1220px;
+  }
+}
+
 @each $name, $size in $gutters {
   /* #{$name} gutters */
   .#{$name}-gutters {

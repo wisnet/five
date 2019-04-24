@@ -4,13 +4,6 @@ import axios from 'axios';
 
 axios.defaults.headers.common['X-WP-Nonce'] = wajax.nonce; // for all requests
 
-axios
-	.get(wajax.api_url + '/team/1')
-	.then(function (e, d) {
-		console.log(e, d);
-	}).catch(function (e) {
-	console.log(e);
-});
 
 // Add a request interceptor
 // axios.interceptors.request.use(function (config) {

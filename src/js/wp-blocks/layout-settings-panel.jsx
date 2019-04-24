@@ -19,7 +19,9 @@ export function panelContainer(props, defaults) {
 					value={attributes.container || defaults.container.default}
 					options={[
 						{label: 'None (parent element has container)', value: 'container-none'},
+						{label: 'Small', value: 'container-sm'},
 						{label: 'Normal', value: 'container'},
+						{label: 'Large', value: 'container-lg'},
 						{label: 'Full Width', value: 'container-fluid'}
 					]}
 					onChange={(nextValue) => {

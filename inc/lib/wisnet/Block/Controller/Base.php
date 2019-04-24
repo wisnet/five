@@ -170,9 +170,9 @@ class Base {
 
 	/**
 	 *
+	 * @param array $block
 	 * @since 0.1.0
 	 *
-	 * @param array $block
 	 */
 	public static function addRegisteredBlock(array $block) {
 		$blocks = self::getRegisteredBlocks();
@@ -190,7 +190,7 @@ class Base {
 	 * @since 0.1.0
 	 */
 	public function register() {
-		$block = [
+		$block = apply_filters('five/register_block/settings', [
 			'name' => $this->name ?? '',
 			'title' => __($this->title) ?? '',
 			'description' => __($this->description) ?? '',
@@ -198,7 +198,8 @@ class Base {
 			'category' => $this->category ?? 'layout',
 			'icon' => $this->icon ?? '',
 			'keywords' => $this->keywords ?? [],
-		];
+			'mode' => 'preview',
+		]);
 
 		acf_register_block($block);
 
@@ -208,9 +209,9 @@ class Base {
 	/**
 	 * Render an ACF field group as a Gutenberg block
 	 *
+	 * @param $block
 	 * @since 0.1.0
 	 *
-	 * @param $block
 	 */
 	public function render($block) {
 		global $currentAcfBlock;

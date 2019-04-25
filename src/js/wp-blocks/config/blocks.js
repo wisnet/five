@@ -30,6 +30,11 @@ export const layoutAttributes = {
 		meta: 'container',
 		default: 'container'
 	},
+	equal_height_columns: {
+		type: 'string',
+		meta: 'equal_height_columns',
+		default: ''
+	},
 	gutters: {
 		type: 'string',
 		meta: 'gutters',

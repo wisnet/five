@@ -88,6 +88,7 @@ export function addSaveProps(extraProps, blockType, attributes) {
 	if (isValidBlockType(blockType.name)) {
 		extraProps = assign(extraProps, {
 			container: attributes.container,
+			equal_height_columns: attributes.equal_height_columns,
 			gutters: attributes.gutters,
 			alignment_horizontal: attributes.alignment_horizontal,
 			alignment_vertical: attributes.alignment_vertical,
@@ -124,7 +125,7 @@ wp.hooks.addFilter('blocks.getSaveElement', 'themes/wisnet/bs-core-blocks', func
 			'class': ['col', (attributes.columns > 0 ? 'col-sm-' + attributes.columns : '')].join(' ')
 		}, {}), element);
 		const row = wp.element.createElement('div', assign({
-			'class': ['row', attributes.alignment_vertical, attributes.alignment_horizontal].join(' ')
+			'class': ['row', attributes.equal_height_columns, attributes.alignment_vertical, attributes.alignment_horizontal].join(' ')
 		}, {}), col);
 		element = wp.element.createElement('div', assign({
 			'class': ['wp-block-wrapper', attributes.gutters, (

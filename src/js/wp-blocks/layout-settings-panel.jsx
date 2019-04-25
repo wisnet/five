@@ -29,6 +29,24 @@ export function panelContainer(props, defaults) {
 							container: nextValue
 						});
 					}} />
+				<SelectControl
+					label={__('Equal Height Columns')}
+					help={__(
+						attributes.equal_height_columns === '' ?
+							'Height will be relative to each element\'s content' :
+							'Each element in the row will have the same height ' + '\n\r' + 'NOTE: this changes the `Vertical Alignment` to `Default`'
+					)}
+					value={attributes.equal_height_columns || defaults.equal_height_columns.default}
+					options={[
+						{label: 'No', value: ''},
+						{label: 'Yes', value: 'row-eq-height'}
+					]}
+					onChange={(nextValue) => {
+						setAttributes({
+							equal_height_columns: nextValue,
+							alignment_vertical: ''
+						});
+					}} />
 			</PanelBody>
 		);
 	}
@@ -65,18 +83,21 @@ function panelSpacingAndPositioning(props, defaults) {
 				}} />;
 		}
 		if (defaults.alignment_vertical || false) {
+			let val = defaults.equal_height_columns === ''
 			vertical = <SelectControl
 				label={__('Vertical Alignment')}
 				help={__('Vertical alignment of the block relative to the container')}
-				value={attributes.alignment_vertical || defaults.alignment_vertical.default}
+				value={attributes.alignment_vertical || (attributes.alignment_vertical === '' ? '' : defaults.alignment_vertical.default)}
 				options={[
+					{label: 'Default', value: ''},
 					{label: 'Top', value: 'align-items-start'},
 					{label: 'Center', value: 'align-items-center'},
 					{label: 'Bottom', value: 'align-items-end'}
 				]}
 				onChange={(nextValue) => {
 					setAttributes({
-						alignment_vertical: nextValue
+						alignment_vertical: nextValue,
+						equal_height_columns: ''
 					});
 				}} />;
 		}

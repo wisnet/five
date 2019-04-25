@@ -26,6 +26,7 @@ class Base {
 
 	protected $globalSettings = [
 		'container' => 'container',
+		'equal_height_columns' => 'equal_height_columns',
 		'gutters' => 'md-gutters',
 		'alignment_horizontal' => 'justify-content-start',
 		'alignment_vertical' => 'align-items-start',

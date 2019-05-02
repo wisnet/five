@@ -18,6 +18,7 @@ use Twig_SimpleFilter;
 use wisnet\Api\Api;
 use wisnet\Controller\Ajax;
 use wisnet\Controller\Plugins;
+use WP_Admin_Bar;
 
 /**
  * We're going to configure our theme inside of a subclass of Timber\Site
@@ -42,7 +43,7 @@ class App extends Site {
 		$this->register_autoload();
 		$this->register_timber();
 		$this->register_acf_block();
-		$this->registerApi();
+		$this->register_api();
 	}
 
 	/** Add timber support. */
@@ -74,7 +75,7 @@ class App extends Site {
 		});
 	}
 
-	public function registerApi() {
+	public function register_api() {
 		/** @global Api $five_api */
 		global $five_api;
 
@@ -88,6 +89,7 @@ class App extends Site {
 		add_action('wp', [$this, 'enqueue_styles']);
 		add_action('init', [$this, 'register_menus']);
 		add_action('init', [$this, 'register_blocks']);
+		add_action('admin_bar_menu', [$this, 'toolbar_link_to_atomic_docs'], 9999, 1);
 
 		$ajax = new Ajax();
 		$ajax->register_ajax_routes();
@@ -98,6 +100,7 @@ class App extends Site {
 		add_theme_support('editor-styles');
 		add_action('admin_enqueue_scripts', [$this, 'admin_enqueue_scripts']);
 		add_action('enqueue_block_assets', [$this, 'enqueue_block_editor_assets']);
+		add_action('admin_bar_menu', [$this, 'toolbar_link_to_atomic_docs'], 9999, 1);
 	}
 
 	public function enqueue_scripts() {
@@ -154,8 +157,8 @@ class App extends Site {
 
 	/** This is where you add some context
 	 *
-	 * @param string $context context['this'] Being the Twig's {{ this }}.
-	 * @return string
+	 * @param array $context context['this'] Being the Twig's {{ this }}.
+	 * @return array
 	 */
 	public function add_to_context($context) {
 		$context['menu'] = new Menu('primary-menu');
@@ -270,5 +273,24 @@ class App extends Site {
 		return apply_filters('wisnet/get_acf_blocks', self::$ACF_BLOCKS);
 	}
 
+	/**
+	 * @param WP_Admin_Bar $wp_admin_bar
+	 *
+	 * @since 0.6.6
+	 */
+	public function toolbar_link_to_atomic_docs($wp_admin_bar) {
+		if (current_user_can('administrator')) {
+			$args = [
+				'id' => 'atomic_docs',
+				'title' => '<span class="ab-icon dashicons dashicons-tagcloud"></span> Atomic Docs',
+				'href' => get_stylesheet_directory_uri() . '/atomic-core',
+				'meta' => [
+					'class' => 'atomics-docs-link',
+					'target' => 'atomic-docs',
+				],
+			];
+			$wp_admin_bar->add_node($args);
+		}
+	}
 }
 

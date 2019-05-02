@@ -1,4 +1,5 @@
 {% if posts.pagination.pages is not empty %}
+    {% set pagination = posts.pagination %}
     <nav class="pagination-block">
         <ul class="pagination">
             {% if pagination.pages|first and pagination.pages|first.current != true %}

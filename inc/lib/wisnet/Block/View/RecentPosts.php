@@ -23,7 +23,6 @@ class RecentPosts extends Base {
 	public function __construct(array $block, array $fields) {
 		parent::__construct($block, $fields);
 
-		p($this);
 		$this->findPosts();
 	}
 

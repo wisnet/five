@@ -8,6 +8,11 @@ export const config = {
 			meta: 'container',
 			default: 'container-fluid'
 		},
+		equal_height_columns: {
+			type: 'string',
+			meta: 'equal_height_columns',
+			default: ''
+		},
 		gutters: {
 			type: 'string',
 			meta: 'gutters',

@@ -9,44 +9,55 @@ import {getBlockConfig} from './config/blocks';
 
 export function panelContainer(props, defaults) {
 	const {attributes, setAttributes} = props;
-	if (defaults.container || false) {
+	
+	if (
+		defaults.container ||
+		defaults.equal_height_columns
+	) {
+		let container, equal_height;
+		if (defaults.container || false) {
+			container = <SelectControl
+				label={__('Container Width')}
+				help={__('Width of the block')}
+				value={attributes.container || defaults.container.default}
+				options={[
+					{label: 'None (parent element has container)', value: 'container-none'},
+					{label: 'Small', value: 'container-sm'},
+					{label: 'Normal', value: 'container'},
+					{label: 'Large', value: 'container-lg'},
+					{label: 'Full Width', value: 'container-fluid'}
+				]}
+				onChange={(nextValue) => {
+					setAttributes({
+						container: nextValue
+					});
+				}} />;
+		}
+		if (defaults.equal_height_columns || false) {
+			equal_height = <SelectControl
+				label={__('Equal Height Columns')}
+				help={__(
+					attributes.equal_height_columns === '' ?
+						'Height will be relative to each element\'s content' :
+						'Each element in the row will have the same height ' + '\n\r' + 'NOTE: this changes the `Vertical Alignment` to `Default`'
+				)}
+				value={attributes.equal_height_columns || defaults.equal_height_columns.default}
+				options={[
+					{label: 'No', value: ''},
+					{label: 'Yes', value: 'row-eq-height'}
+				]}
+				onChange={(nextValue) => {
+					setAttributes({
+						equal_height_columns: nextValue,
+						alignment_vertical: ''
+					});
+				}} />;
+		}
 		return (
 			<PanelBody title={__('Layout')}
 			           initialOpen={false}>
-				<SelectControl
-					label={__('Container Width')}
-					help={__('Width of the block')}
-					value={attributes.container || defaults.container.default}
-					options={[
-						{label: 'None (parent element has container)', value: 'container-none'},
-						{label: 'Small', value: 'container-sm'},
-						{label: 'Normal', value: 'container'},
-						{label: 'Large', value: 'container-lg'},
-						{label: 'Full Width', value: 'container-fluid'}
-					]}
-					onChange={(nextValue) => {
-						setAttributes({
-							container: nextValue
-						});
-					}} />
-				<SelectControl
-					label={__('Equal Height Columns')}
-					help={__(
-						attributes.equal_height_columns === '' ?
-							'Height will be relative to each element\'s content' :
-							'Each element in the row will have the same height ' + '\n\r' + 'NOTE: this changes the `Vertical Alignment` to `Default`'
-					)}
-					value={attributes.equal_height_columns || defaults.equal_height_columns.default}
-					options={[
-						{label: 'No', value: ''},
-						{label: 'Yes', value: 'row-eq-height'}
-					]}
-					onChange={(nextValue) => {
-						setAttributes({
-							equal_height_columns: nextValue,
-							alignment_vertical: ''
-						});
-					}} />
+				{container}
+				{equal_height}
 			</PanelBody>
 		);
 	}
@@ -83,7 +94,7 @@ function panelSpacingAndPositioning(props, defaults) {
 				}} />;
 		}
 		if (defaults.alignment_vertical || false) {
-			let val = defaults.equal_height_columns === ''
+			let val = defaults.equal_height_columns === '';
 			vertical = <SelectControl
 				label={__('Vertical Alignment')}
 				help={__('Vertical alignment of the block relative to the container')}

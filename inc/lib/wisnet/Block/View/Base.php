@@ -58,7 +58,7 @@ class Base {
 	public function mapper($fields) {
 		$this->setFields($fields);
 		foreach ($this->getFields() as $key => $val) {
-			$method = str_replace(['-', '_'], '', 'set' . $key);
+			$method = apply_filters('block_mapper_method', str_replace(['-', '_'], '', 'set' . $key), $key);
 			if (method_exists($this, $method)) {
 				call_user_func([$this, $method], $val);
 			}

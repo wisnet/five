@@ -1,1 +1,44 @@
 /* src/scss/blocks/_side-by-side.scss */
+.side-by-side-section__wrap {
+
+  img {
+    margin-bottom: 20px;
+  }
+}
+
+.order-2 {
+  order: 2;
+}
+
+@include media-breakpoint-down(xs) {
+  .order-col-xs-2 {
+    order: 2;
+  }
+
+}
+
+@include media-breakpoint-up(sm) {
+  .order-col-sm-2 {
+    order: 2;
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .order-col-md-2 {
+    order: 2;
+  }
+}
+
+
+@include media-breakpoint-up(lg) {
+  .order-col-lg-2 {
+    order: 2;
+  }
+}
+
+@include media-breakpoint-up(xl) {
+  .order-col-xl-2 {
+    order: 2;
+  }
+}
+

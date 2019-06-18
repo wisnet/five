@@ -5,12 +5,26 @@
     {% embed 'container.twig' %}
         {% block content %}
             {% embed 'row.twig' %}
-                {% block content %}
-                    <div class="col-xs-12 col-sm-6 vertical-center-column side-by-side-section__wrap">
+                {% block content %}{% set bp = ('items_break_point' | block_global_setting) %}
+                    {% set col = ('columns' | block_global_setting) %}
+
+                    {# This could probably be refactored #}
+                    {% if col == 0 and bp != 'col-fluid' %}
+                        {% set colClass = bp %}
+                    {% elseif col > 0 and bp == 'col-fluid' %}
+                        {% set colClass = 'col-' ~ col %}
+                    {% else %}
+                        {% set colClass = (col > 0 ? (bp ~ ' ' ~ bp ~ '-' ~ col) :  'col') %}
+                    {% endif %}
+
+                    <div class="{{ colClass }} side-by-side-section__wrap {% if block.getContentPosition() == 'left' %}order-{{ bp }}-2{% endif %}">
                         <img class="img-fluid" src="{{ block.getImage().image.url }}" alt="{{ block.getImage().image.title }}" />
                     </div>
-                    <div class="col-xs-12 col-sm-6 vertical-center-column side-by-side-section__wrap {{ block.getSetting('content_alignment') }}">
+                    <div class="{{ colClass }} side-by-side-section__wrap {{ block.getSetting('content_alignment') }}">
                         {{ block.getContent() }}
+                        {% for button in block.getButtons() %}
+                            <a class="btn {{ button.style }} {{ button.size }}" href="{{ button.link.url }}" target="{{ button.link.target }}">{{ button.link.title }}</a>
+                        {% endfor %}
                     </div>
                 {% endblock %}
             {% endembed %}

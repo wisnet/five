@@ -15,7 +15,12 @@ use wisnet\Block\Model\WPImage;
 class SideBySide extends Base {
 	/** @var WPImage */
 	public $image;
+	/** @var string */
 	public $content;
+	/** @var array */
+	public $buttons = [];
+	/** @var string */
+	public $contentPosition = 'left';
 
 	public function __construct(array $acfBlock, array $fields) {
 		$this->globalSettings['container'] = 'container-fluid';
@@ -66,6 +71,52 @@ class SideBySide extends Base {
 	 */
 	public function setContent($content) {
 		$this->content = $content;
+		return $this;
+	}
+
+	/**
+	 * @return array
+	 */
+	public function getButtons(): array {
+		return $this->buttons;
+	}
+
+	/**
+	 * @param array $buttons
+	 * @return SideBySide
+	 */
+	public function setButtons(array $buttons): SideBySide {
+		$this->buttons = $buttons;
+		return $this;
+	}
+
+	/**
+	 * Add a button to the buttons array
+	 *
+	 * @param $button
+	 * @return $this
+	 */
+	public function addButton($button) {
+		$buttons = $this->getButtons();
+		$buttons[] = $button;
+		$this->setButtons($buttons);
+
+		return $this;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getContentPosition(): string {
+		return $this->contentPosition;
+	}
+
+	/**
+	 * @param string $contentPosition
+	 * @return SideBySide
+	 */
+	public function setContentPosition(string $contentPosition): SideBySide {
+		$this->contentPosition = $contentPosition;
 		return $this;
 	}
 

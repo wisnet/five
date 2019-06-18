@@ -30,6 +30,10 @@ class SideBySide extends Base {
 		$image = $fields['image'] ?? false;
 		unset($fields['image']);
 
+		if (!$fields['buttons']) {
+			$fields['buttons'] = [];
+		}
+
 		parent::__construct($acfBlock, $fields);
 
 		if (($image ?? false)) {

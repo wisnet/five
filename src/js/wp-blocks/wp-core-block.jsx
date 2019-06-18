@@ -135,7 +135,17 @@ wp.hooks.addFilter('blocks.getSaveElement', 'themes/wisnet/bs-core-blocks', func
 			), attributes.container].join(' '),
 			'data-type': blockType.name
 		}, attributes), row);
+		
+		let content = (() => {
+			let elt = document.createElement('span');
+			elt.textContent = element.props.content;
+			return elt.innerHTML;
+		})();
+		
+		element.props.content = content;
 	}
+	
+	
 	return element;
 }, 999);
 

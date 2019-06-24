@@ -9,7 +9,6 @@ $gutters: (
         'lg': 22px,
         'xl': 30px
 );
-
 .container-sm,
 .container-lg {
   @extend .container;
@@ -47,7 +46,7 @@ $gutters: (
     max-width: 900px;
   }
   .container-lg {
-    max-width: 1020px;
+    max-width: 1220px;
   }
 }
 
@@ -55,35 +54,56 @@ $gutters: (
   .container-sm {
     max-width: 1080px;
   }
+  .container {
+    max-width: 1170px !important;
+  }
   .container-lg {
-    max-width: 1220px;
+    max-width: 1420px !important;
   }
 }
 
 @each $name, $size in $gutters {
   /* #{$name} gutters */
+  #{$name}-gutters,
   .#{$name}-gutters {
     padding-right: #{$size};
     padding-left: #{$size};
-
-    @if $name == 'no' {
-      &.container {
-        margin-left: auto;
-        margin-right: auto;
-      }
-    }
 
     .row {
       margin-right: -#{$size};
       margin-left: -#{$size};
 
       > {
-        [class*="col"] {
+        [class^="col"],
+        [class*=" col"] {
           padding-right: #{$size};
           padding-left: #{$size};
 
           &.vs {
             margin-top: calc(#{$size} * 2);
+          }
+
+          /** allow nested rows to have gutters **/
+          .row {
+            @each $nested_name, $neseted_size in $gutters {
+              &.#{$nested_name}-gutters {
+                @debug &;
+                margin-right: -#{$neseted_size};
+                margin-left: -#{$neseted_size};
+
+                > {
+                  [class^="col"],
+                  [class*=" col"] {
+                    padding-right: #{$neseted_size};
+                    padding-left: #{$neseted_size};
+
+                    &.vs {
+                      margin-top: calc(#{$neseted_size} * 2);
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }

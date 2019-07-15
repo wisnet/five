@@ -114,6 +114,9 @@ wp.hooks.addFilter('blocks.getSaveElement', 'themes/wisnet/bs-core-blocks', func
 	
 	// add the defaults to the attributes if they do not exist
 	const defaults = getBlockConfig(blockType.name).attributes;
+	
+	console.log({element, attributes});
+	
 	for (let key in defaults) {
 		if (defaults.hasOwnProperty(key) && typeof attributes[key] === 'undefined') {
 			attributes[key] = defaults[key].default;
@@ -132,10 +135,9 @@ wp.hooks.addFilter('blocks.getSaveElement', 'themes/wisnet/bs-core-blocks', func
 				typeof element.props.className === 'string' && element.props.className.match(/(^|\s+)wp-block-/) ?
 					element.props.className.replace(/wp-block-/, 'wp-block-wrapper-') :
 					'wp-block-wrapper-' + blockType.name.replace(/\//, '-').replace(/^core-/, '')
-			), attributes.container].join(' '),
+			), attributes.container, attributes.className].join(' '),
 			'data-type': blockType.name
 		}, attributes), row);
-		
 		let content = (() => {
 			let elt = document.createElement('span');
 			elt.textContent = element.props.content;

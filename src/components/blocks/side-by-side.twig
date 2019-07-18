@@ -18,7 +18,7 @@
                     {% endif %}
 
                     <div class="{{ colClass }} side-by-side-section__wrap {% if block.getContentPosition() == 'left' %}order-{{ bp }}-2{% endif %}">
-                        <img class="img-fluid" src="{{ block.getImage().image.url }}" alt="{{ block.getImage().image.title }}" />
+                        <img class="img-fluid" src="{{ block.getImage().image.src }}" alt="{{ block.getImage().image.title }}" />
                     </div>
                     <div class="{{ colClass }} side-by-side-section__wrap {{ block.getSetting('content_alignment') }}">
                         {{ block.getContent() }}

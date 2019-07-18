@@ -1,4 +1,4 @@
-{% set image = post.thumbnail.src ?: (options[post.post_type] is defined and options[post.post_type].placeholder_image is not empty ?  options[post.post_type].placeholder_image.url : false) %}
+{% set image = post.thumbnail.src ?: (options[post.post_type] is defined and options[post.post_type].placeholder_image is not empty ?  options[post.post_type].placeholder_image.src : false) %}
 {% set size = options[post.post_type].photo_size ?? 'contain' %}
 {% block content %}
     <article class="col-sm-4 tease tease-{{ post.post_type }}" id="tease-{{ post.ID }}">

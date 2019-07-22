@@ -115,13 +115,18 @@ wp.hooks.addFilter('blocks.getSaveElement', 'themes/wisnet/bs-core-blocks', func
 	// add the defaults to the attributes if they do not exist
 	const defaults = getBlockConfig(blockType.name).attributes;
 	
-	console.log({element, attributes});
+	console.log({element, attributes, blockType});
 	
 	for (let key in defaults) {
 		if (defaults.hasOwnProperty(key) && typeof attributes[key] === 'undefined') {
 			attributes[key] = defaults[key].default;
 		}
 	}
+	
+	let validBlock = isValidBlockType(blockType.name);
+	let validElement = wp.element.isValidElement(element);
+	
+	console.log({validBlock, validElement});
 	
 	if (isValidBlockType(blockType.name) && wp.element.isValidElement(element)) {
 		const col = wp.element.createElement('div', assign({
@@ -138,13 +143,22 @@ wp.hooks.addFilter('blocks.getSaveElement', 'themes/wisnet/bs-core-blocks', func
 			), attributes.container, attributes.className].join(' '),
 			'data-type': blockType.name
 		}, attributes), row);
+		
 		let content = (() => {
+			const textContent = blockType.name === 'core/list' ? element.props.values : element.props.content;
 			let elt = document.createElement('span');
-			elt.textContent = element.props.content;
+			
+			console.log({textContent}, element, element.props, element.props.value, blockType.name);
+			
+			elt.textContent = textContent;
 			return elt.innerHTML;
 		})();
 		
-		element.props.content = content;
+		if (blockType.name === 'core/list') {
+			element.props.values = content;
+		} else {
+			element.props.content = content;
+		}
 	}
 	
 	

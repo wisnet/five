@@ -115,8 +115,6 @@ wp.hooks.addFilter('blocks.getSaveElement', 'themes/wisnet/bs-core-blocks', func
 	// add the defaults to the attributes if they do not exist
 	const defaults = getBlockConfig(blockType.name).attributes;
 	
-	console.log({element, attributes, blockType});
-	
 	for (let key in defaults) {
 		if (defaults.hasOwnProperty(key) && typeof attributes[key] === 'undefined') {
 			attributes[key] = defaults[key].default;
@@ -125,8 +123,6 @@ wp.hooks.addFilter('blocks.getSaveElement', 'themes/wisnet/bs-core-blocks', func
 	
 	let validBlock = isValidBlockType(blockType.name);
 	let validElement = wp.element.isValidElement(element);
-	
-	console.log({validBlock, validElement});
 	
 	if (isValidBlockType(blockType.name) && wp.element.isValidElement(element)) {
 		let col;
@@ -157,9 +153,6 @@ wp.hooks.addFilter('blocks.getSaveElement', 'themes/wisnet/bs-core-blocks', func
 		let content = (() => {
 			const textContent = blockType.name === 'core/list' ? element.props.values : element.props.content;
 			let elt = document.createElement('span');
-			
-			console.log({textContent}, element, element.props, element.props.value, blockType.name);
-			
 			elt.textContent = textContent;
 			return elt.innerHTML;
 		})();

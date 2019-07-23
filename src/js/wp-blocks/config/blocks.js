@@ -92,7 +92,6 @@ export function getBlockConfig(block = null) {
 	 *  if the block name is empty OR there are not custom attributes
 	 *  return the default attributes
 	 */
-	console.log({block, blockAttributes});
 	if (!block || !(block in blockAttributes)) {
 		return {
 			hasExtraPanel: false,

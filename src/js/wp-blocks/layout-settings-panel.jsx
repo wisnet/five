@@ -254,8 +254,6 @@ function panelResponsiveness(props, defaults) {
 }
 
 const applyWithSelect = withSelect((select) => {
-	console.log({select});
-	
 	return {
 		column_width_disabled: false
 	};

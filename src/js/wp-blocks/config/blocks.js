@@ -1,5 +1,6 @@
 import {config as slideshowAttributes} from './slideshow';
 import {config as sideBySideAttributes} from './side-by-side';
+import {config as columnsAttributes} from './columns';
 
 export const registeredAcfBlocks = [
 	'acf/slideshow',
@@ -73,7 +74,8 @@ export const layoutAttributes = {
  */
 const blockAttributes = {
 	'acf/slideshow': slideshowAttributes,
-	'acf/side-by-side': sideBySideAttributes
+	'acf/side-by-side': sideBySideAttributes,
+	'core/columns': columnsAttributes
 };
 
 /**
@@ -90,6 +92,7 @@ export function getBlockConfig(block = null) {
 	 *  if the block name is empty OR there are not custom attributes
 	 *  return the default attributes
 	 */
+	console.log({block, blockAttributes});
 	if (!block || !(block in blockAttributes)) {
 		return {
 			hasExtraPanel: false,

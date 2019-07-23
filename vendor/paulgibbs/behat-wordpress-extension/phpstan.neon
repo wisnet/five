@@ -1,5 +1,0 @@
-parameters:
-  excludes_analyse:
-    # These reference global WP functions.
-    - %rootDir%/../../../src/Driver/Element/Wpphp/*
-    - src/Driver/WpphpDriver.php

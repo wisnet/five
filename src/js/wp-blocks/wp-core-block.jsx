@@ -129,9 +129,19 @@ wp.hooks.addFilter('blocks.getSaveElement', 'themes/wisnet/bs-core-blocks', func
 	console.log({validBlock, validElement});
 	
 	if (isValidBlockType(blockType.name) && wp.element.isValidElement(element)) {
-		const col = wp.element.createElement('div', assign({
-			'class': ['col', (attributes.columns > 0 ? 'col-sm-' + attributes.columns : '')].join(' ')
+		let col;
+		// we need to differentiate here to keep compatibility
+		// with WP's built-in "Columns" block
+		let bootstrapColumns = attributes.columns;
+		
+		if (blockType.name === 'core/columns') {
+			bootstrapColumns = 0; // keep this one fluid
+		}
+		
+		col = wp.element.createElement('div', assign({
+			'class': ['col', (bootstrapColumns > 0 ? 'col-sm-' + bootstrapColumns : '')].join(' ')
 		}, {}), element);
+		
 		const row = wp.element.createElement('div', assign({
 			'class': ['row', attributes.equal_height_columns, attributes.alignment_vertical, attributes.alignment_horizontal].join(' ')
 		}, {}), col);

@@ -115,6 +115,10 @@ wp.hooks.addFilter('blocks.getSaveElement', 'themes/wisnet/bs-core-blocks', func
 	// add the defaults to the attributes if they do not exist
 	const defaults = getBlockConfig(blockType.name).attributes;
 	
+	if (blockType.name === 'core/image') {
+		console.log({element, blockType, attributes}, attributes.align);
+	}
+	
 	for (let key in defaults) {
 		if (defaults.hasOwnProperty(key) && typeof attributes[key] === 'undefined') {
 			attributes[key] = defaults[key].default;
@@ -123,45 +127,65 @@ wp.hooks.addFilter('blocks.getSaveElement', 'themes/wisnet/bs-core-blocks', func
 	
 	let validBlock = isValidBlockType(blockType.name);
 	let validElement = wp.element.isValidElement(element);
+	let imageAlign = '';
+	
 	
 	if (isValidBlockType(blockType.name) && wp.element.isValidElement(element)) {
-		let col;
-		// we need to differentiate here to keep compatibility
-		// with WP's built-in "Columns" block
-		let bootstrapColumns = attributes.columns;
-		
-		if (blockType.name === 'core/columns') {
-			bootstrapColumns = 0; // keep this one fluid
-		}
-		
-		col = wp.element.createElement('div', assign({
-			'class': ['col', (bootstrapColumns > 0 ? 'col-sm-' + bootstrapColumns : '')].join(' ')
-		}, {}), element);
-		
-		const row = wp.element.createElement('div', assign({
-			'class': ['row', attributes.equal_height_columns, attributes.alignment_vertical, attributes.alignment_horizontal].join(' ')
-		}, {}), col);
-		element = wp.element.createElement('div', assign({
-			'class': ['wp-block-wrapper', attributes.gutters, (
+		if (blockType.name === 'core/image') {
+			// fixes issue with image content being invalid
+			console.log({element, blockType, attributes});
+			// const imageAlign = typeof attributes.align != 'undefined' ? 'align' + attributes.align : '';
+			// element.props.className += ' ' + imageAlign;
+		} else {
+			let col;
+			// we need to differentiate here to keep compatibility
+			// with WP's built-in "Columns" block
+			let bootstrapColumns = attributes.columns;
+			
+			if (blockType.name === 'core/columns') {
+				bootstrapColumns = 0; // keep this one fluid
+			}
+			
+			let originalClass = (
 				typeof element.props.className === 'string' && element.props.className.match(/(^|\s+)wp-block-/) ?
 					element.props.className.replace(/wp-block-/, 'wp-block-wrapper-') :
 					'wp-block-wrapper-' + blockType.name.replace(/\//, '-').replace(/^core-/, '')
-			), attributes.container, attributes.className].join(' '),
-			'data-type': blockType.name
-		}, attributes), row);
-		
-		let content = (() => {
-			const textContent = blockType.name === 'core/list' ? element.props.values : element.props.content;
-			let elt = document.createElement('span');
-			elt.textContent = textContent;
-			return elt.innerHTML;
-		})();
-		
-		if (blockType.name === 'core/list') {
-			element.props.values = content;
-		} else {
-			element.props.content = content;
+			
+			);
+			let additionalClass = attributes.className || '';
+			
+			col = wp.element.createElement('div', assign({
+				'class': ['col', (bootstrapColumns > 0 ? 'col-sm-' + bootstrapColumns : '')].join(' ')
+			}, {}), element);
+			
+			const row = wp.element.createElement('div', assign({
+				'class': ['row', attributes.equal_height_columns, attributes.alignment_vertical, attributes.alignment_horizontal].join(' ')
+			}, {}), col);
+			element = wp.element.createElement('div', assign({
+				'class': [
+					'wp-block-wrapper',
+					originalClass,
+					attributes.container,
+					attributes.gutters,
+					additionalClass
+				].join(' '),
+				'data-type': blockType.name
+			}, attributes), row);
+			
+			let content = (() => {
+				const textContent = blockType.name === 'core/list' ? element.props.values : element.props.content;
+				let elt = document.createElement('span');
+				elt.textContent = textContent;
+				return elt.innerHTML;
+			})();
+			
+			if (blockType.name === 'core/list') {
+				element.props.values = content;
+			} else {
+				element.props.content = content;
+			}
 		}
+		
 	}
 	
 	

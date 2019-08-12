@@ -1,5 +1,6 @@
 import {config as slideshowAttributes} from './slideshow';
 import {config as sideBySideAttributes} from './side-by-side';
+import {config as imageAttributes} from './image';
 import {config as columnsAttributes} from './columns';
 
 export const registeredAcfBlocks = [
@@ -75,7 +76,8 @@ export const layoutAttributes = {
 const blockAttributes = {
 	'acf/slideshow': slideshowAttributes,
 	'acf/side-by-side': sideBySideAttributes,
-	'core/columns': columnsAttributes
+	'core/columns': columnsAttributes,
+	'core/image': imageAttributes,
 };
 
 /**

@@ -133,9 +133,6 @@ wp.hooks.addFilter('blocks.getSaveElement', 'themes/wisnet/bs-core-blocks', func
 	if (isValidBlockType(blockType.name) && wp.element.isValidElement(element)) {
 		if (blockType.name === 'core/image') {
 			// fixes issue with image content being invalid
-			console.log({element, blockType, attributes});
-			// const imageAlign = typeof attributes.align != 'undefined' ? 'align' + attributes.align : '';
-			// element.props.className += ' ' + imageAlign;
 		} else {
 			let col;
 			// we need to differentiate here to keep compatibility

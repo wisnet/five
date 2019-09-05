@@ -22,15 +22,15 @@ class Slideshow extends Base {
 	//	];
 
 	public function __construct(array $block, array $fields = []) {
-		$this->globalSettings['container'] = 'container-fluid';
-		$this->globalSettings['gutters'] = 'no-gutters';
-		$this->defaultSettings['autoplay'] = true;
-		$this->defaultSettings['interval'] = 7000;
-		$this->defaultSettings['controls'] = true;
-		$this->defaultSettings['indicators'] = true;
-		$this->defaultSettings['pause_on_hover'] = true;
-		$this->defaultSettings['wrap'] = true;
-		$this->defaultSettings['height'] = 0;
+		$this->global_settings['container'] = 'container-fluid';
+		$this->global_settings['gutters'] = 'no-gutters';
+		$this->default_settings['autoplay'] = true;
+		$this->default_settings['interval'] = 7000;
+		$this->default_settings['controls'] = true;
+		$this->default_settings['indicators'] = true;
+		$this->default_settings['pause_on_hover'] = true;
+		$this->default_settings['wrap'] = true;
+		$this->default_settings['height'] = 0;
 
 		parent::__construct($block, $fields);
 	}

@@ -34,7 +34,10 @@ const production = mix.inProduction();
 const devtool = production ? false : 'source-map';
 
 mix.webpackConfig({
-	devtool: devtool
+	devtool: devtool,
+	externals: {
+		'jquery': 'jQuery'
+	}
 });
 
 if (!production) {

@@ -8,7 +8,7 @@
  * @author Michael Dahlke <mdahlke@wisnet.com>
  */
 
-function cptui_register_my_cpts() {
+function five_register_my_cpts() {
 	/**
 	 * Post Type: Team Members.
 	 */
@@ -51,4 +51,4 @@ function cptui_register_my_cpts() {
 	register_post_type('team_member', $args);
 }
 
-add_action('init', 'cptui_register_my_cpts');
+add_action('init', 'five_register_my_cpts');

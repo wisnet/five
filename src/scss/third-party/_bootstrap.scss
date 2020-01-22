@@ -85,19 +85,19 @@ $gutters: (
 
           /** allow nested rows to have gutters **/
           .row {
-            @each $nested_name, $neseted_size in $gutters {
+            @each $nested_name, $nested_size in $gutters {
               &.#{$nested_name}-gutters {
-                margin-right: -#{$neseted_size};
-                margin-left: -#{$neseted_size};
+                margin-right: -#{$nested_size};
+                margin-left: -#{$nested_size};
 
                 > {
                   [class^="col"],
                   [class*=" col"] {
-                    padding-right: #{$neseted_size};
-                    padding-left: #{$neseted_size};
+                    padding-right: #{$nested_size};
+                    padding-left: #{$nested_size};
 
                     &.vs {
-                      margin-top: calc(#{$neseted_size} * 2);
+                      margin-top: calc(#{$nested_size} * 2);
                     }
                   }
                 }

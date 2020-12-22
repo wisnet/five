@@ -36,18 +36,8 @@ addFilter('editor.BlockEdit', 'themes/wisnet', addMyCustomBlockControls);
  * @param {string} name The name of the block.
  */
 function isValidBlockType(name) {
-	const validBlockTypes = coreAllowedContainer;
-	const valid = validBlockTypes.includes(name);
-	
-	if (valid) {
-		return valid;
-	}
-	
 	let allowed = (
-		name.substr(0, 5) === 'core/' ||
-		name.substr(0, 5) === 'five/' ||
-		name.substr(0, 11) === 'core-embed/' ||
-		name.substr(0, 14) === 'atomic-blocks/'
+		name.substr(0, 5) === 'five/'
 	);
 	
 	return allowed;

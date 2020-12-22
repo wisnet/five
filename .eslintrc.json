@@ -8,7 +8,9 @@
   "globals": {
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly",
-    "wajax": "readonly"
+    "wajax": "readonly",
+    "lodash": "readonly",
+    "wp": "readonly"
   },
   "parserOptions": {
     "ecmaFeatures": {

@@ -1,11 +1,7 @@
 // See https://richardtape.com/?p=348
-
-import {coreAllowedContainer} from './config/blocks';
-
 const {assign} = lodash;
-const {__} = wp.i18n;
 const {addFilter} = wp.hooks;
-const {createHigherOrderComponent, withSelect} = wp.compose;
+const {createHigherOrderComponent} = wp.compose;
 import editForm from './layout-settings-panel';
 import {layoutAttributes, getBlockConfig} from './config/blocks';
 
@@ -36,9 +32,7 @@ addFilter('editor.BlockEdit', 'themes/wisnet', addMyCustomBlockControls);
  * @param {string} name The name of the block.
  */
 function isValidBlockType(name) {
-	let allowed = (
-		name.substr(0, 5) === 'five/'
-	);
+	let allowed = name.substr(0, 5) === 'five/';
 	
 	return allowed;
 	
@@ -115,11 +109,6 @@ wp.hooks.addFilter('blocks.getSaveElement', 'themes/wisnet/bs-core-blocks', func
 		}
 	}
 	
-	let validBlock = isValidBlockType(blockType.name);
-	let validElement = wp.element.isValidElement(element);
-	let imageAlign = '';
-	
-	
 	if (isValidBlockType(blockType.name) && wp.element.isValidElement(element)) {
 		if (blockType.name === 'core/image') {
 			// fixes issue with image content being invalid
@@ -174,7 +163,6 @@ wp.hooks.addFilter('blocks.getSaveElement', 'themes/wisnet/bs-core-blocks', func
 		}
 		
 	}
-	
 	
 	return element;
 }, 999);

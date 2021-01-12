@@ -21,7 +21,7 @@ error.log
 ## `composer install` in the production environment
 vendor
 node_modules
-dist/*/*.map
+dist
 mix-manifest.json
 
 ## Large/disallowed file types ##

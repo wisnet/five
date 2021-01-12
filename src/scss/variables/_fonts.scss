@@ -1,0 +1,15 @@
+/* src/scss/variables/_fonts.scss */
+
+$sansFont: 'Arial', sans-serif;
+$serifFont: 'Times New Roman', Times, serif;
+
+$fonts: (
+        'sans': $sansFont,
+        'serif': $serifFont
+);
+
+:root {
+  @each $id, $font in $fonts {
+    --font-#{$id}: #{$font};
+  }
+}

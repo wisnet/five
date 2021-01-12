@@ -230,5 +230,13 @@
         "backgroundColor": "",
         "order": 0,
         "has_js": "false"
+    },
+    {
+        "component": "fonts",
+        "category": "variables",
+        "description": "",
+        "backgroundColor": "",
+        "order": -28,
+        "has_js": "false"
     }
 ]

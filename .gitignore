@@ -19,7 +19,7 @@ error.log
 ## but since we are dealing with WPEngine, we need to.
 ## That is, until they decide we should be able to run
 ## `composer install` in the production environment
-#vendor
+vendor
 node_modules
 dist/*/*.map
 mix-manifest.json

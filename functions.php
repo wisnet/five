@@ -71,6 +71,7 @@ require_once(__DIR__ . '/inc/lib/DebugAlias.php');
 require_once(__DIR__ . '/inc/acf.php');
 require_once(__DIR__ . '/inc/custom-post-types.php');
 require_once(__DIR__ . '/inc/custom-taxonomies.php');
+require_once(__DIR__ . '/inc/theme-colors.php');
 
 $debug = new DebugAlias();
 $site = new App();

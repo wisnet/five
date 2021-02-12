@@ -1,3 +1,6 @@
+// disable bootstrap print styles in Gutenberg to
+// prevent error with compiling @page
+$enable-print-styles: false;
 $editorWidth: 500px;
 .editor-block-list__layout {
   @import './scss/main';

@@ -33,7 +33,7 @@
     "file-system": "^2.2.2",
     "fs": "0.0.1-security",
     "jquery": "^3.5.1",
-    "jquery-ui": "^1.12.1",
+    "jquery-ui": "^1.13.0",
     "laravel-mix": "^5.0.9",
     "popper.js": "^1.16.1",
     "pre-commit": "^1.2.2",
